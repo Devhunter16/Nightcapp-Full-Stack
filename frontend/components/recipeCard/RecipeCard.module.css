@@ -1,0 +1,108 @@
+.cardContainer {
+    font-family: 'League Spartan', sans-serif;
+    box-shadow: 0 4px 8px 0 rgba(50, 50, 50, 0.2);
+    transition: 0.3s;
+    border-radius: 20px;
+    width: 305px;
+    height: 400px;
+    margin: 20px;
+    display: inline-block;
+    color: #ecefe2;
+    background-color: #1c1123;
+    box-shadow: 0 1px 8px 0 #8495ca;
+    animation: jump .3s ease-in-out;
+    border: 2px solid #8495ca;
+}
+
+@keyframes jump {
+    0% {}
+
+    50% {
+        box-shadow: 0 8px 16px 0 #D793BB;
+    }
+
+    100% {}
+}
+
+.cardContainer:hover {
+    box-shadow: 0 8px 16px 0 #D793BB;
+    cursor: pointer;
+    transform: translateY(-4px);
+}
+
+.cardImage {
+    border: 1px solid #8495ca;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.cardContainer .container {
+    padding: 12px;
+}
+
+.cocktailName {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 14px;
+    margin-bottom: 12px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #ecefe2;
+}
+
+.ingredientsTitle {
+    display: flex;
+    flex-direction: row;
+    font-size: 12px;
+    align-items: center;
+    justify-content: center;
+    margin-top: -4px;
+    margin-bottom: -10px;
+}
+
+.icon {
+    font-size: 18px;
+    padding-bottom: 2px;
+    padding-right: 4px;
+}
+
+.titleUnderline {
+    color: #8495ca;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.recipeIngredient {
+    display: flex;
+    padding-left: 15px;
+    font-size: 20px;
+    margin-top: 12px;
+}
+
+#measurement {
+    color: #D793BB;
+    padding-left: 5px;
+}
+
+#ingredientsBox {
+    flex-wrap: wrap;
+    overflow-x: auto;
+    height: 140px;
+}
+
+#ingredientsBox::-webkit-scrollbar {
+    width: 8px;
+}
+
+#ingredientsBox::-webkit-scrollbar-track {
+    margin-top: 10px;
+    background-color: #1C1123;
+    border-radius: 10px;
+}
+
+#ingredientsBox::-webkit-scrollbar-thumb {
+    background-color: #D793BB;
+    border-radius: 10px;
+}

@@ -1,0 +1,144 @@
+#body {
+    font-family: "League Spartan", sans-serif;
+    color: white;
+    display: flex;
+    width: 40vw;
+    flex-direction: row;
+    margin-top: 4rem;
+    margin-bottom: 6rem;
+    position: relative;
+}
+
+@media (max-width: 1765px) {
+    #body {
+        width: 45vw;
+        margin-top: 2.5rem;
+        margin-bottom: 4rem;
+    }
+}
+
+@media (max-width: 1600px) {
+    #body {
+        width: 60vw;
+    }
+}
+
+@media (max-width: 1000px) {
+    #body {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 600px) {
+    #body {
+        width: 90vw;
+    }
+}
+
+#drinkTitle {
+    font-size: 2vw;
+    margin-top: 1.75rem;
+}
+
+.icon {
+    width: 30px;
+    height: 30px;
+    position: relative;
+}
+
+@media (max-width: 1500px) {
+    #drinkTitle {
+        font-size: 3vw;
+    }
+}
+
+@media (max-width: 1000px) {
+    #drinkTitle {
+        text-align: center;
+        font-size: 6vw;
+    }
+}
+
+@media (max-width: 600px) {
+    #drinkTitle {
+        font-size: 8vw;
+    }
+}
+
+.img {
+    max-width: 100%;
+    height: 25vw;
+    width: 25vw;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0px 4px 8px rgba(124, 123, 123, 0.2);
+    border: 5px solid rgba(198, 174, 212, 0.2);
+    margin-top: 15px;
+    margin-right: 25px;
+    box-shadow: 0 1px 8px 2px #8495ca;
+    background: #d793bb;
+    background-size: 200% auto;
+}
+
+@media (max-width: 1500px) {
+    .img {
+        height: 40vw;
+        width: 40vw;
+    }
+}
+
+@media (max-width: 1000px) {
+    .img {
+        align-self: center;
+        height: 60vw;
+        width: 60vw;
+    }
+}
+
+@media (max-width: 600px) {
+    .img {
+        height: 95vw;
+        width: 95vw;
+        margin-right: 0px;
+    }
+}
+
+#ingredientsTitle {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    text-decoration: underline;
+    text-decoration-color: #d793bb;
+}
+
+@media (max-width: 600px) {
+    #ingredientsTitle {
+        font-size: 6vw;
+    }
+}
+
+#ingredient {
+    font-size: 1.25rem;
+    margin-left: 1rem;
+    margin-bottom: 0.25rem;
+}
+
+#measurements {
+    color: #e4a5ca;
+}
+
+#directionsTitle {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    text-decoration: underline;
+    text-decoration-color: #be709e;
+}
+
+@media (max-width: 600px) {
+    #directionsTitle {
+        font-size: 6vw;
+    }
+}
+
+#drinkDescription {
+    line-height: 23px;
+}

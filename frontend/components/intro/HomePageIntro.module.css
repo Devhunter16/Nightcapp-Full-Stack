@@ -1,0 +1,46 @@
+#container {
+    margin-bottom: 8rem;
+}
+
+#h1 {
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    font-family: "Vibur", sans-serif;
+    font-weight: 400;
+    color: #fff;
+    text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #f09,
+        0 0 82px #f09, 0 0 92px #f09, 0 0 102px #f09, 0 0 151px #f09;
+    font-size: 6rem;
+    animation: pulsate 0.11s ease-in-out infinite alternate;
+}
+
+@keyframes pulsate {
+    100% {
+        text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff, 0 0 40px #f09,
+            0 0 80px #f09, 0 0 90px #f09, 0 0 100px #f09, 0 0 150px #f09;
+    }
+
+    0% {
+        text-shadow: 0 0 4px #fff, 0 0 10px #fff, 0 0 18px #fff, 0 0 38px #f09,
+            0 0 73px #f09, 0 0 80px #f09, 0 0 94px #f09, 0 0 140px #f09;
+    }
+}
+
+#p {
+    display: flex;
+    flex-direction: column;
+    font-family: 'League Spartan', sans-serif;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 18px;
+    line-height: 1.5;
+    color: #c1b4cf;
+}
+
+#welcome {
+    color: #fff;
+}

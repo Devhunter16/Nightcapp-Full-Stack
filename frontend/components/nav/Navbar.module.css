@@ -1,0 +1,114 @@
+.nav {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.navList {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.logo {
+    color: #fff;
+    font-family: "Vibur", sans-serif;
+    margin: 0 10px;
+    font-size: 25px;
+    font-weight: bold;
+    display: inline-block;
+    text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #f09,
+        0 0 82px #f09, 0 0 92px #f09, 0 0 102px #f09, 0 0 151px #f09;
+    position: relative;
+}
+
+.navItem {
+    color: #140E1D;
+    font-family: "Vibur", sans-serif;
+    text-shadow: 0 0 3px #fff;
+    text-decoration: none;
+    margin: 10px 10px 0 10px;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    display: inline-block;
+    position: relative;
+}
+
+.searchForm {
+    margin-top: 20px;
+    transform: translateX(60px);
+}
+
+.active {
+    color: #fff;
+    font-family: "Vibur", sans-serif;
+    text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #f09,
+        0 0 82px #f09, 0 0 92px #f09, 0 0 102px #f09, 0 0 151px #f09;
+    animation: pulsate;
+}
+
+.navItem:hover {
+    color: #fff;
+    font-family: "Vibur", sans-serif;
+    text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #f09,
+        0 0 82px #f09, 0 0 92px #f09, 0 0 102px #f09, 0 0 151px #f09;
+    animation: pulsate;
+}
+
+@keyframes pulsate {
+    100% {
+        text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff, 0 0 40px #f09,
+            0 0 80px #f09, 0 0 90px #f09, 0 0 100px #f09, 0 0 150px #f09;
+    }
+
+    0% {
+        text-shadow: 0 0 4px #fff, 0 0 10px #fff, 0 0 18px #fff, 0 0 38px #f09,
+            0 0 73px #f09, 0 0 80px #f09, 0 0 94px #f09, 0 0 140px #f09;
+    }
+}
+
+@media (max-width: 1220px) {
+    .searchForm {
+        transform: none;
+    }
+}
+
+@media (max-width: 1000px) {
+    .nav {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 80px;
+    }
+
+    .logo {
+        margin-top: 10px;
+    }
+
+    .searchForm {
+        margin-top: 10px;
+    }
+
+    .navItem {
+        margin: -5px 10px 0 10px;
+    }
+}
+
+@media (max-width: 495px) {
+    .nav {
+        margin-bottom: 145px;
+    }
+
+    .navItem {
+        margin: 10px 10px 0 10px;
+    }
+}
+
+@media (max-width: 385px) {
+    .nav {
+        padding: 0;
+    }
+}
