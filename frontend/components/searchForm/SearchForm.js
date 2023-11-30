@@ -7,7 +7,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDice } from "@fortawesome/free-solid-svg-icons";
 
 import { searchCocktailByName, searchCocktailByIngredient } from "../../pages/api/searchCocktail";
-import Alert from "../alert/AlertModal";
 import randomCocktail from "../../pages/api/randomCocktail";
 
 function SearchForm() {
@@ -100,9 +99,11 @@ function SearchForm() {
                 </div>
                 <form>
                     <input
-                        id={styles.input}
+                        id={`${alert ? styles.alertInput : styles.input}`}
                         type="text"
                         value={searchTerm}
+                        placeholder={alert && "No search text entered"}
+                        onClick={handleCloseAlert}
                         onChange={handleChange}
                     />
                     <button
@@ -122,11 +123,6 @@ function SearchForm() {
                     </button>
                 </form>
             </div>
-            {alert && <Alert
-                primaryMessage={"Whoops!"}
-                secondaryMessage={"Looks like you left the search blank, enter some text to search!"}
-                close={handleCloseAlert}
-            />}
         </>
     );
 };
