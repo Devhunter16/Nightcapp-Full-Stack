@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDice } from "@fortawesome/free-solid-svg-icons";
 
 import { searchCocktailByName, searchCocktailByIngredient } from "../../pages/api/searchCocktail";
-import Alert from "../statusIndicators/alert/AlertModal";
+import Alert from "../alert/AlertModal";
 import randomCocktail from "../../pages/api/randomCocktail";
 
 function SearchForm() {
@@ -106,7 +106,7 @@ function SearchForm() {
                         onChange={handleChange}
                     />
                     <button
-                        className={styles.btn}
+                        className={`${styles.btn} ${loading ? styles.loadingBtn : ''}`}
                         onClick={handleSubmit}
                     >
                         {loading ? "Searching..." : "Search"}
