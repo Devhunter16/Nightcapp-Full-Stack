@@ -84,3 +84,13 @@
     border: 1px solid #ccc;
     border-radius: 4px;
 }
+
+@media (max-width: 620px) {
+    #form {
+        flex-direction: column;
+    }
+
+    .option {
+        margin-top: 20px;
+    }
+}
