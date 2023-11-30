@@ -7,12 +7,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDice } from "@fortawesome/free-solid-svg-icons";
 
 import { searchCocktailByName, searchCocktailByIngredient } from "../../pages/api/searchCocktail";
-import Alert from "../alert/AlertModal";
+import Alert from "../statusIndicators/alert/AlertModal";
 import randomCocktail from "../../pages/api/randomCocktail";
 
 function SearchForm() {
     const [searchByName, setSearchByName] = useState(true);
     const [searchTerm, setSearchTerm] = useState("");
+    const [loading, setLoading] = useState(false);
     const [alert, setAlert] = useState(false);
     const router = useRouter();
 
@@ -24,19 +25,21 @@ function SearchForm() {
         event.preventDefault();
         let results = {};
         setAlert(false); // Reset the alert state
+        setLoading(true); // Set loading state to true when starting the search
         // Prevents users from searching if the search field is empty
         if (searchTerm.trim() === "") {
             setAlert(true);
+            setLoading(false);
             return;
         };
-        if (searchByName == true) {
+        if (searchByName) {
             results = await searchCocktailByName(searchTerm);
-            console.log(results);
-        } else if (searchByName == false) {
+        } else if (!searchByName) {
             results = await searchCocktailByIngredient(searchTerm);
         };
+        setLoading(false);
         setSearchTerm("");
-        if (results == undefined) {
+        if (results === undefined) {
             console.log("No data");
         } else {
             // Pushing variables through to page and setting the route
@@ -83,6 +86,7 @@ function SearchForm() {
         };
     };
 
+
     return (
         <>
             <div id={styles.form}>
@@ -105,7 +109,7 @@ function SearchForm() {
                         className={styles.btn}
                         onClick={handleSubmit}
                     >
-                        Search
+                        {loading ? "Searching..." : "Search"}
                     </button>
                     <button
                         className={styles.btn}
