@@ -44,6 +44,26 @@
     transition: all 0.2s;
 }
 
+@keyframes colorChange {
+    0% {
+        color: white;
+    }
+
+    50% {
+        color: #b7b3f5;
+        /* Blue color, adjust as needed */
+    }
+
+    100% {
+        color: white;
+    }
+}
+
+.loadingBtn {
+    cursor: not-allowed;
+    animation: colorChange 3s infinite;
+}
+
 .btn:hover {
     color: #8f88e6;
     background-color: white;
