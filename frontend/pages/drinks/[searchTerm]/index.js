@@ -6,9 +6,6 @@ import DrinksList from "../../../components/drinksList/DrinksList";
 
 export default function DrinksPage() {
     const [parsedCocktails, setParsedCocktails] = useState([]);
-    // Loading state so that RecipeDetails does not try to render before parsedCocktail
-    // is initialized
-    const [loading, setLoading] = useState(true);
     const router = useRouter();
 
     const {
@@ -17,12 +14,15 @@ export default function DrinksPage() {
 
     // Set the parsedCocktail state when the component mounts
     useEffect(() => {
-        if (drinks) {
-            const parsedDrinks = JSON.parse(drinks);
-            console.log(parsedDrinks[0]);
-            setParsedCocktails(parsedDrinks);
-            setLoading(false); // Set loading to false after parsedDrinks is initialized
-        };
+        try {
+            if (drinks) {
+                const parsedDrinks = JSON.parse(drinks);
+                setParsedCocktails(parsedDrinks);
+            }
+        } catch (error) {
+            console.error("Error parsing drinks data", error);
+            // FIXME Handle the error, e.g., redirect to an error page or display an error message
+        }
     }, [drinks]);
 
     const handleShowDrinkRecipe = (result) => {
@@ -37,14 +37,10 @@ export default function DrinksPage() {
 
     return (
         <Layout>
-            {loading ? (
-                <p>Loading...</p> // Show a loading indicator while parsedCocktail is being initialized
-            ) : (
-                <DrinksList
-                    results={parsedCocktails}
-                    handleShowDrinkRecipe={handleShowDrinkRecipe}
-                />
-            )}
+            <DrinksList
+                results={parsedCocktails}
+                handleShowDrinkRecipe={handleShowDrinkRecipe}
+            />
         </Layout>
     );
 };
