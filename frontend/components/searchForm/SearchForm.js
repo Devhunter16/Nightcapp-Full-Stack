@@ -103,7 +103,7 @@ function SearchForm() {
                         id={`${alert ? styles.alertInput : styles.input}`}
                         type="text"
                         value={searchTerm}
-                        placeholder={alert && "No cocktails found"}
+                        placeholder={alert && "No results found"}
                         onClick={handleCloseAlert}
                         onChange={handleChange}
                     />
