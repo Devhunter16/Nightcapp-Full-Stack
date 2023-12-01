@@ -1,6 +1,3 @@
-// Helps enforce a stricter set of rules and coding standards in this file
-"use strict";
-
 /** Express app for nightcapp */
 const express = require("express");
 // CORS is important because it enforces same-origin policy which is a security 
