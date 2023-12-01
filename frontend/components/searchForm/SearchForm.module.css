@@ -92,6 +92,7 @@
     margin-right: 2px;
     color: red;
     border: 1px solid red;
+    box-shadow: 0 0 30px red;
     border-radius: 4px;
 }
 
