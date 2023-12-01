@@ -39,6 +39,7 @@ function SearchForm() {
         setLoading(false);
         setSearchTerm("");
         if (results === undefined) {
+            setAlert(true);
             console.log("No data");
         } else {
             // Pushing variables through to page and setting the route
@@ -102,7 +103,7 @@ function SearchForm() {
                         id={`${alert ? styles.alertInput : styles.input}`}
                         type="text"
                         value={searchTerm}
-                        placeholder={alert && "No search text entered"}
+                        placeholder={alert && "No cocktails found"}
                         onClick={handleCloseAlert}
                         onChange={handleChange}
                     />
