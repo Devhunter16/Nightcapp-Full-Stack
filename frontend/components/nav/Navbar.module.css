@@ -71,7 +71,7 @@
     }
 }
 
-@media (max-width: 1220px) {
+@media (max-width: 1400px) {
     .searchForm {
         transform: none;
     }
