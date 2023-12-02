@@ -20,7 +20,6 @@ export async function searchCocktailByName(searchTerm) {
                 ingredientsList
             });
         };
-        console.log(cocktails);
         return cocktails;
     } catch (error) {
         console.log("Error with GET request to backend API");
