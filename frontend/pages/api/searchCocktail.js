@@ -1,10 +1,13 @@
 import axios from "axios";
 
+const BACKEND_API_URL = "http://localhost:3002";
+
+// Function that makes a get request to the backend API to search cocktails by name
 export async function searchCocktailByName(searchTerm) {
     try {
         const response = await axios({
             method: "get",
-            url: `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${searchTerm}`,
+            url: `${BACKEND_API_URL}/search?recipe=${searchTerm}`,
         });
         const {
             drinks
@@ -20,10 +23,12 @@ export async function searchCocktailByName(searchTerm) {
         console.log(cocktails);
         return cocktails;
     } catch (error) {
+        console.log("Error with GET request to backend API");
         console.error(error);
     };
 };
 
+// Function that makes a get request to the backend API to search cocktails by ingredient
 export async function searchCocktailByIngredient(searchTerm) {
     try {
         const response = await axios({
