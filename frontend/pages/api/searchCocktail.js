@@ -1,5 +1,7 @@
 import axios from "axios";
 
+import matchIngredientsWithMeasurements from "../../utils/utils";
+
 const BACKEND_API_URL = "http://localhost:3002";
 
 // Function that makes a get request to the backend API to search cocktails by name
@@ -7,7 +9,7 @@ export async function searchCocktailByName(searchTerm) {
     try {
         const response = await axios({
             method: "get",
-            url: `${BACKEND_API_URL}/search?recipe=${searchTerm}`,
+            url: `${BACKEND_API_URL}/search_by_name?name=${searchTerm}`,
         });
         const {
             drinks
@@ -32,7 +34,7 @@ export async function searchCocktailByIngredient(searchTerm) {
     try {
         const response = await axios({
             method: "get",
-            url: `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${searchTerm}`,
+            url: `${BACKEND_API_URL}/search_by_ingredient?ingredient=${searchTerm}`,
         });
         const {
             drinks
@@ -43,7 +45,7 @@ export async function searchCocktailByIngredient(searchTerm) {
             // a seperate GET request for every drink in the response
             const cocktailDetails = await axios({
                 method: "get",
-                url: `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cocktail.strDrink}`,
+                url: `${BACKEND_API_URL}/search_by_name?name=${cocktail.strDrink}`,
             });
             cocktail = cocktailDetails.data.drinks[0];
             const ingredientsList = matchIngredientsWithMeasurements(cocktailDetails.data.drinks[0]);
@@ -56,21 +58,4 @@ export async function searchCocktailByIngredient(searchTerm) {
     } catch (error) {
         console.error(error);
     };
-};
-
-export function matchIngredientsWithMeasurements(cocktailData) {
-    const ingredients = [];
-    for (let i = 1; i <= 15; i++) {
-        const ingredient = {};
-        if (cocktailData[`strMeasure${i}`]) {
-            ingredient.measurement = cocktailData[`strMeasure${i}`];
-        }
-        if (cocktailData[`strIngredient${i}`]) {
-            ingredient.name = cocktailData[`strIngredient${i}`];
-        }
-        if (Object.keys(ingredient).length) {
-            ingredients.push(ingredient);
-        }
-    };
-    return ingredients;
 };
