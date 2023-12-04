@@ -32,6 +32,16 @@ router.get("/search_by_ingredient", async (req, res, next) => {
     };
 });
 
+router.get("/random_search", async (req, res, next) => {
+    try {
+        const response = await axios.get("https://www.thecocktaildb.com/api/json/v1/1/random.php");
+        return res.json(response.data.drinks[0]);
+    } catch (err) {
+        console.error(err);
+        // return next(new NotFoundError("Cocktails not found."));
+    };
+});
+
 // Need this export or Router.use() will complain that it is expecting a middleware 
 // function but is recieving an object
 module.exports = router;
