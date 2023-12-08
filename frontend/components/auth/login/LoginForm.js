@@ -42,7 +42,7 @@ function LoginForm() {
                             Log In
                         </button>
                     </div>
-                    <Link className={styles.btnSignup} type="submit" href="/signup">
+                    <Link className={styles.btnSignup} type="submit" href="/register">
                         New here? Sign up!
                     </Link>
                 </form>
