@@ -2,11 +2,18 @@ const db = require("../db");
 const bcrypt = require("bcrypt");
 const { BadRequestError } = require("../expressError");
 
+// Using the "static" keyword before the class methods in this class to indicate 
+// that these methods are associated with the class itself rather than an instance
+// of the class. This means I can call these methods directly on the class without
+// having to create an instance
 class User {
-    // Using the "static" keyword here before the class methods to indicate that
-    // these methods are associated with the class itself rather than an instance of
-    // the class. This means I can cal these methods directly on the class without
-    // having to create an instance
+
+    /** Register a user with data
+    *
+    * Returns { username, firstName, lastName, email, isAdmin }
+    *
+    * Throws BadRequestError on duplicates
+    */
     static async register({ firstName, lastName, username, password }) {
         const duplicateCheck = await db.query(
             `SELECT username
