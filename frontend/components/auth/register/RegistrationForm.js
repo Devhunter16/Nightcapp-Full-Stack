@@ -1,10 +1,12 @@
 import styles from "./RegistrationForm.module.css";
 
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 import UserDbApi from "../../../pages/api/users/UserDbApi";
 
 function RegistrationForm() {
+    const router = useRouter();
 
     const [registrationFormData, setRegistrationFormData] = useState({
         username: "",
@@ -25,10 +27,9 @@ function RegistrationForm() {
 
     async function handleSubmit(e) {
         e.preventDefault();
-        let response = await registerRequest(registrationFormData);
+        const response = await registerRequest(registrationFormData);
         if (response.success) {
-            console.log("good job it worked");
-            // navigate("/");
+            router.push("/");
         } else {
             console.log(response.errors);
         };
