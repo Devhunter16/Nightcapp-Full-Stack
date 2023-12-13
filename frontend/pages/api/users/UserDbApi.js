@@ -27,8 +27,6 @@ class UserDbApi {
     /** Register for Nightcapp */
     static async registerUser(data) {
         let response = await this.request(`/auth/register`, data, "post");
-        console.log(data);
-        console.log("signup at backend not working");
         return response.token;
     };
 };
