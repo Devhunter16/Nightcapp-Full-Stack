@@ -9,7 +9,7 @@ export async function searchCocktailByName(searchTerm) {
     try {
         const response = await axios({
             method: "get",
-            url: `${BACKEND_API_URL}/search_by_name?name=${searchTerm}`,
+            url: `${BACKEND_API_URL}/cocktaildb/search_by_name?name=${searchTerm}`,
         });
         const {
             drinks
@@ -34,7 +34,7 @@ export async function searchCocktailByIngredient(searchTerm) {
     try {
         const response = await axios({
             method: "get",
-            url: `${BACKEND_API_URL}/search_by_ingredient?ingredient=${searchTerm}`,
+            url: `${BACKEND_API_URL}/cocktaildb/search_by_ingredient?ingredient=${searchTerm}`,
         });
         const {
             drinks
@@ -45,7 +45,7 @@ export async function searchCocktailByIngredient(searchTerm) {
             // a seperate GET request for every drink in the response
             const cocktailDetails = await axios({
                 method: "get",
-                url: `${BACKEND_API_URL}/search_by_name?name=${cocktail.strDrink}`,
+                url: `${BACKEND_API_URL}/cocktaildb/search_by_name?name=${cocktail.strDrink}`,
             });
             cocktail = cocktailDetails.data.drinks[0];
             const ingredientsList = matchIngredientsWithMeasurements(cocktailDetails.data.drinks[0]);
