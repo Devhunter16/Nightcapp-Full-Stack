@@ -1,4 +1,4 @@
-.signupIntro {
+.registrationIntro {
     margin: 0 12px 12px 12px;
     display: flex;
     align-content: center;
@@ -13,12 +13,12 @@
 }
 
 @media (max-width: 660px) {
-    .signupIntro {
+    .registrationIntro {
         font-size: 2rem;
     }
 }
 
-.signupForm {
+.registrationForm {
     display: flex;
     align-content: center;
     justify-content: center;
