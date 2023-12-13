@@ -1,11 +1,48 @@
 import styles from "./RegistrationForm.module.css";
 
+import { useState } from "react";
+
 function RegistrationForm() {
+
+    const [registrationFormData, setRegistrationFormData] = useState({
+        username: "",
+        password: "",
+        firstName: "",
+        lastName: "",
+    });
+
+    async function registerRequest(registrationFormData) {
+        try {
+            // let token = await UserDbApi.registerUser(registrationFormData);
+            // setToken(token);
+            console.log("success!!!");
+            return { success: true };
+        } catch (errors) {
+            console.log("Registration failed.", errors);
+            return { success: false, errors };
+        };
+    };
+
+    async function handleSubmit(e) {
+        e.preventDefault();
+        let response = await registerRequest(registrationFormData);
+        if (response.success) {
+            console.log("good job it worked");
+            // navigate("/");
+        } else {
+            console.log(response.errors);
+        };
+    };
+
+    function handleChange(e) {
+        const { name, value } = e.target;
+        setRegistrationFormData((data) => ({ ...data, [name]: value }));
+    };
 
     return (
         <>
-            <h3 className={styles.signupIntro}>Sign up with us today!</h3>
-            <div className={styles.signupForm}>
+            <h3 className={styles.registrationIntro}>Sign up with us today!</h3>
+            <div className={styles.registrationForm}>
                 <form>
                     <div className={styles.formGroup}>
                         <label className={styles.label} htmlFor="firstName">
@@ -16,8 +53,8 @@ function RegistrationForm() {
                             type="text"
                             id="firstName"
                             name="firstName"
-                            value={""}
-                            onChange={""}
+                            value={registrationFormData.firstName}
+                            onChange={handleChange}
                             required
                         />
                     </div>
@@ -30,8 +67,8 @@ function RegistrationForm() {
                             type="text"
                             id="lastName"
                             name="lastName"
-                            value={""}
-                            onChange={""}
+                            value={registrationFormData.lastName}
+                            onChange={handleChange}
                             required
                         />
                     </div>
@@ -44,8 +81,8 @@ function RegistrationForm() {
                             type="text"
                             id="username"
                             name="username"
-                            value={""}
-                            onChange={""}
+                            value={registrationFormData.username}
+                            onChange={handleChange}
                             required
                         />
                     </div>
@@ -58,13 +95,13 @@ function RegistrationForm() {
                             type="password"
                             id="password"
                             name="password"
-                            value={""}
-                            onChange={""}
+                            value={registrationFormData.password}
+                            onChange={handleChange}
                             required
                         />
                     </div>
                     <div className={styles.formGroup}>
-                        <button className={styles.btn} type="submit" onClick={""}>
+                        <button className={styles.btn} type="submit" onClick={handleSubmit}>
                             Sign Up
                         </button>
                     </div>
