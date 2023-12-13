@@ -2,6 +2,8 @@ import styles from "./RegistrationForm.module.css";
 
 import { useState } from "react";
 
+import UserDbApi from "../../../pages/api/users/UserDbApi";
+
 function RegistrationForm() {
 
     const [registrationFormData, setRegistrationFormData] = useState({
@@ -13,9 +15,7 @@ function RegistrationForm() {
 
     async function registerRequest(registrationFormData) {
         try {
-            // let token = await UserDbApi.registerUser(registrationFormData);
-            // setToken(token);
-            console.log("success!!!");
+            await UserDbApi.registerUser(registrationFormData);
             return { success: true };
         } catch (errors) {
             console.log("Registration failed.", errors);
