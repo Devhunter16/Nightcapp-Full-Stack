@@ -24,6 +24,11 @@ class UserDbApi {
         };
     };
 
+    static async loginUser(data) {
+        let response = await this.request(`/auth/login`, data, "post");
+        return response.token;
+    };
+
     /** Register for Nightcapp */
     static async registerUser(data) {
         let response = await this.request(`/auth/register`, data, "post");
