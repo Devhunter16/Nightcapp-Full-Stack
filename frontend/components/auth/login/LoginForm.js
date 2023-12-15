@@ -13,7 +13,7 @@ function LoginForm() {
 
     async function loginRequest(loginFormData) {
         try {
-            await UserDbApi.login(loginFormData);
+            await UserDbApi.loginUser(loginFormData);
             console.log("success!!!");
             return { success: true };
         } catch (errors) {
