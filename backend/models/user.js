@@ -28,7 +28,7 @@ class User {
 
         // The BCRYPT_WORK_FACTOR is the number of rounds the bcrypt algorithm
         // will execute when hashing the password
-        const hashedPassword = await bcrypt.hash(password, process.env.BCRYPT_WORK_FACTOR);
+        const hashedPassword = await bcrypt.hash(password, 12);
 
         const result = await db.query(
             `INSERT INTO users
