@@ -8,19 +8,39 @@ const { BadRequestError } = require("../expressError");
 // having to create an instance
 class User {
 
-    /** Register a user with data
-    *
-    * Returns { username, firstName, lastName, email, isAdmin }
-    *
-    * Throws BadRequestError on duplicates
-    */
+    // Finds a user in the database upon login and authenticates the login creds
+    static async login(username, password) {
+        const result = await db.query(
+            `SELECT username, 
+                password,
+                first_name AS "firstName",
+                last_name AS "lastName"
+                FROM users
+                WHERE username = $1`,
+            [username]
+        );
+
+        const user = result.rows[0];
+
+        if (user) {
+            // Compares hashed password to new hash from password
+            const isValid = await bcrypt.compare(password, user.password);
+            if (isValid === true) {
+                // deletes user.password;
+                return user;
+            };
+        };
+        throw new UnauthorizedError("Invalid username/password");
+    };
+
+    // Register a user with data
     static async register({ firstName, lastName, username, password }) {
         try {
             // Check for duplicate username
             const duplicateCheck = await db.query(
                 `SELECT username
-               FROM users
-               WHERE username = $1`,
+                FROM users
+                WHERE username = $1`,
                 [username]
             );
 
@@ -34,9 +54,9 @@ class User {
             // Insert user into the database
             const result = await db.query(
                 `INSERT INTO users
-               (first_name, last_name, username, password)
-               VALUES ($1, $2, $3, $4)
-               RETURNING *`,
+                (first_name, last_name, username, password)
+                VALUES ($1, $2, $3, $4)
+                RETURNING *`,
                 [firstName, lastName, username, hashedPassword]
             );
 
