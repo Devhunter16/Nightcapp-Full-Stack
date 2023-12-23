@@ -2,19 +2,21 @@ import styles from "./LoginForm.module.css";
 
 import Link from "next/link";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 import UserDbApi from "../../../pages/api/users/UserDbApi";
 
 function LoginForm() {
+    const router = useRouter();
     const [loginFormData, setLoginFormData] = useState({
         username: "",
         password: "",
     });
 
     async function loginRequest(loginFormData) {
+        console.log("Login form data:", loginFormData);
         try {
             await UserDbApi.loginUser(loginFormData);
-            console.log("success!!!");
             return { success: true };
         } catch (errors) {
             console.log("Login failed", errors);
@@ -26,8 +28,7 @@ function LoginForm() {
         e.preventDefault();
         const response = await loginRequest(loginFormData);
         if (response.success) {
-            console.log("good job it worked");
-            // navigate("/");
+            router.push("/");
         } else {
             console.log(response.errors);
         };
