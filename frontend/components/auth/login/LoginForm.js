@@ -4,10 +4,13 @@ import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/router";
 
+import CurrentUserContext from "../CurrentUserContext";
 import UserDbApi from "../../../pages/api/users/UserDbApi";
 
 function LoginForm() {
     const router = useRouter();
+    const { setToken } = useContext(CurrentUserContext);
+
     const [loginFormData, setLoginFormData] = useState({
         username: "",
         password: "",
@@ -16,7 +19,8 @@ function LoginForm() {
     async function loginRequest(loginFormData) {
         console.log("Login form data:", loginFormData);
         try {
-            await UserDbApi.loginUser(loginFormData);
+            let token = await UserDbApi.loginUser(loginFormData);
+            setToken(token);
             return { success: true };
         } catch (errors) {
             console.log("Login failed", errors);
