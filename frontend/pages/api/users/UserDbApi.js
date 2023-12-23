@@ -17,8 +17,9 @@ class UserDbApi {
         try {
             return (await axios({ url, method, data, params, headers })).data;
         } catch (err) {
-            console.log(data);
-            console.error("API Error: ", err.response);
+            console.error("Response Status: ", err.response.status);
+            console.error("Response Headers: ", err.response.headers);
+            console.error("Response Data: ", err.response.data);
             let message = err.response.data.error.message;
             throw Array.isArray(message) ? message : [message];
         };
