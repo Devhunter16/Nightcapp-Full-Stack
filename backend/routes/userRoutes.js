@@ -5,8 +5,6 @@ const router = express.Router();
 const User = require("../models/user");
 
 router.post("/login", async function (req, res, next) {
-    console.log("Logging a user in in userRoutes.js");
-
     try {
         const { username, password } = req.body;
         // const validator = jsonschema.validate(writeObj, userRegisterSchema);
