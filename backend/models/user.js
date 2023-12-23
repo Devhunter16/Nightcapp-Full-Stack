@@ -1,6 +1,6 @@
 const db = require("../db");
 const bcrypt = require("bcrypt");
-const { BadRequestError } = require("../expressError");
+const { BadRequestError, UnauthorizedError } = require("../expressError");
 
 // Using the "static" keyword before the class methods in this class to indicate 
 // that these methods are associated with the class itself rather than an instance
@@ -10,11 +10,10 @@ class User {
 
     // Finds a user in the database upon login and authenticates the login creds
     static async login(username, password) {
+
         const result = await db.query(
             `SELECT username, 
-                password,
-                first_name AS "firstName",
-                last_name AS "lastName"
+                password
                 FROM users
                 WHERE username = $1`,
             [username]
@@ -23,10 +22,9 @@ class User {
         const user = result.rows[0];
 
         if (user) {
-            // Compares hashed password to new hash from password
+            // Compares hashed password to password entered in login form
             const isValid = await bcrypt.compare(password, user.password);
             if (isValid === true) {
-                // deletes user.password;
                 return user;
             };
         };
