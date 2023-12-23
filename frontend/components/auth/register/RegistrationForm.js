@@ -3,10 +3,12 @@ import styles from "./RegistrationForm.module.css";
 import { useState } from "react";
 import { useRouter } from "next/router";
 
+import CurrentUserContext from "../CurrentUserContext";
 import UserDbApi from "../../../pages/api/users/UserDbApi";
 
 function RegistrationForm() {
     const router = useRouter();
+    const { setToken } = useContext(CurrentUserContext);
 
     const [registrationFormData, setRegistrationFormData] = useState({
         username: "",
@@ -17,7 +19,8 @@ function RegistrationForm() {
 
     async function registerRequest(registrationFormData) {
         try {
-            await UserDbApi.registerUser(registrationFormData);
+            let token = await UserDbApi.registerUser(registrationFormData);
+            setToken(token);
             return { success: true };
         } catch (errors) {
             console.log("Registration failed.", errors);
