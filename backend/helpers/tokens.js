@@ -9,7 +9,6 @@ const createToken = (user) => {
         username: user.username
     };
 
-    console.log("Payload from createToken() in token.js:", payload)
     return jwt.sign(payload, SECRET_KEY);
 };
 
