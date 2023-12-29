@@ -25,8 +25,10 @@ class UserDbApi {
         };
     };
 
+    /** Login to Nightcapp */
     static async loginUser(data) {
         let response = await this.request(`/auth/login`, data, "post");
+        console.log("response.token in UserDbApi:", response.token);
         return response.token;
     };
 
