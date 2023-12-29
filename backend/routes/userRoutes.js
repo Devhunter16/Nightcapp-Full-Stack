@@ -2,6 +2,8 @@
 const express = require("express");
 const router = express.Router();
 
+const { createToken } = require("../helpers/tokens");
+
 const User = require("../models/user");
 
 router.post("/login", async function (req, res, next) {
@@ -14,9 +16,10 @@ router.post("/login", async function (req, res, next) {
         // }
 
         const user = await User.login(username, password);
-        // const token = createToken(newUser);
-        console.log("User: ", user);
-        return res.status(201).json({ user: user });
+        // FIXME CHECK THIS OUT
+        const token = createToken(user);
+        console.log("token in userRoutes /login: ", token);
+        return res.json({ token });
     } catch (err) {
         return next(err);
     };
@@ -32,9 +35,9 @@ router.post("/register", async function (req, res, next) {
         // }
 
         const newUser = await User.register(data);
-        // const token = createToken(newUser);
-        console.log("New user: ", newUser);
-        return res.status(201).json({ user: newUser });
+        const token = createToken(newUser);
+        console.log("token in userRoutes /register: ", token);
+        return res.status(201).json({ token });
     } catch (err) {
         return next(err);
     };
