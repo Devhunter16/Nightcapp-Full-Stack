@@ -97,16 +97,6 @@
     }
 }
 
-@media (max-width: 495px) {
-    .nav {
-        margin-bottom: 145px;
-    }
-
-    .navItem {
-        margin: 10px 10px 0 10px;
-    }
-}
-
 @media (max-width: 385px) {
     .nav {
         padding: 0;
