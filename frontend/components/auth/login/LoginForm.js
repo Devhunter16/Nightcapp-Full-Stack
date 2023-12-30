@@ -1,7 +1,7 @@
 import styles from "./LoginForm.module.css";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useRouter } from "next/router";
 
 import CurrentUserContext from "../CurrentUserContext";
