@@ -1,6 +1,6 @@
 import styles from "./RegistrationForm.module.css";
 
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useRouter } from "next/router";
 
 import CurrentUserContext from "../CurrentUserContext";
