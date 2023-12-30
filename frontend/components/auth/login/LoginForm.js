@@ -10,14 +10,13 @@ import UserDbApi from "../../../pages/api/users/UserDbApi";
 function LoginForm() {
     const router = useRouter();
     const { setToken } = useContext(CurrentUserContext);
-
+    const [isPasswordVisible, setIsPasswordVisible] = useState(false);
     const [loginFormData, setLoginFormData] = useState({
         username: "",
         password: "",
     });
 
     async function loginRequest(loginFormData) {
-        console.log("Login form data:", loginFormData);
         try {
             let token = await UserDbApi.loginUser(loginFormData);
             setToken(token);
@@ -41,6 +40,10 @@ function LoginForm() {
     function handleChange(e) {
         const { name, value } = e.target;
         setLoginFormData((data) => ({ ...data, [name]: value }));
+    };
+
+    function togglePasswordVisibility() {
+        setIsPasswordVisible(prevState => !prevState);
     };
 
     return (
@@ -67,15 +70,23 @@ function LoginForm() {
                         <label htmlFor="password" className={styles.label}>
                             Password:
                         </label>
-                        <input
-                            className={styles.input}
-                            type="password"
-                            id="password"
-                            name="password"
-                            value={loginFormData.password}
-                            onChange={handleChange}
-                            required
-                        />
+                        <div className={styles.passwordInputContainer}>
+                            <input
+                                className={styles.input}
+                                type={isPasswordVisible ? "text" : "password"}
+                                id="password"
+                                name="password"
+                                value={loginFormData.password}
+                                onChange={handleChange}
+                                required
+                            />
+                            <span
+                                className={`${styles.togglePassword} ${isPasswordVisible ? styles.visible : ''}`}
+                                onClick={togglePasswordVisibility}
+                            >
+                                👁
+                            </span>
+                        </div>
                     </div>
 
                     <div className={styles.formGroup}>
