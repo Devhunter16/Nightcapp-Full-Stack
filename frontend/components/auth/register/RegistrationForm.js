@@ -9,7 +9,7 @@ import UserDbApi from "../../../pages/api/users/UserDbApi";
 function RegistrationForm() {
     const router = useRouter();
     const { setToken } = useContext(CurrentUserContext);
-
+    const [isPasswordVisible, setIsPasswordVisible] = useState(false);
     const [registrationFormData, setRegistrationFormData] = useState({
         username: "",
         password: "",
@@ -41,6 +41,10 @@ function RegistrationForm() {
     function handleChange(e) {
         const { name, value } = e.target;
         setRegistrationFormData((data) => ({ ...data, [name]: value }));
+    };
+
+    function togglePasswordVisibility() {
+        setIsPasswordVisible(prevState => !prevState);
     };
 
     return (
@@ -94,15 +98,23 @@ function RegistrationForm() {
                         <label htmlFor="password" className={styles.label}>
                             Password:
                         </label>
-                        <input
-                            className={styles.input}
-                            type="password"
-                            id="password"
-                            name="password"
-                            value={registrationFormData.password}
-                            onChange={handleChange}
-                            required
-                        />
+                        <div className={styles.passwordInputContainer}>
+                            <input
+                                className={styles.input}
+                                type={isPasswordVisible ? "text" : "password"}
+                                id="password"
+                                name="password"
+                                value={registrationFormData.password}
+                                onChange={handleChange}
+                                required
+                            />
+                            <span
+                                className={`${styles.togglePassword} ${isPasswordVisible ? styles.visible : ''}`}
+                                onClick={togglePasswordVisibility}
+                            >
+                                👁
+                            </span>
+                        </div>
                     </div>
                     <div className={styles.formGroup}>
                         <button className={styles.btn} type="submit" onClick={handleSubmit}>
