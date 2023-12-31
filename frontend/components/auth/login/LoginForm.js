@@ -7,6 +7,8 @@ import { useRouter } from "next/router";
 import CurrentUserContext from "../CurrentUserContext";
 import UserDbApi from "../../../pages/api/users/UserDbApi";
 
+// FIXME DON'T LET USERS LOG IN WITH EMPTY FIELDS
+
 function LoginForm() {
     const router = useRouter();
     const { setToken } = useContext(CurrentUserContext);
