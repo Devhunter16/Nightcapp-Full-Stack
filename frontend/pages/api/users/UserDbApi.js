@@ -4,7 +4,7 @@ const BACKEND_API_URL = "http://localhost:3002";
 
 class UserDbApi {
 
-    // token for interactions with the User Database
+    // Token for interactions with the User Database
     static token;
 
     // Generic method for making backend api requests
@@ -17,9 +17,6 @@ class UserDbApi {
         try {
             return (await axios({ url, method, data, params, headers })).data;
         } catch (err) {
-            console.error("Response Status: ", err.response.status);
-            console.error("Response Headers: ", err.response.headers);
-            console.error("Response Data: ", err.response.data);
             let message = err.response.data.error.message;
             throw Array.isArray(message) ? message : [message];
         };
@@ -28,8 +25,6 @@ class UserDbApi {
     /** Login to Nightcapp */
     static async loginUser(data) {
         let response = await this.request(`/auth/login`, data, "post");
-        console.log("response in UserDbApi:", response);
-        console.log("response.token in UserDbApi:", response.token);
         return response.token;
     };
 
