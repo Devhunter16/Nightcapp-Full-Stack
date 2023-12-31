@@ -25,7 +25,7 @@ class UserDbApi {
     /** Login to Nightcapp */
     static async loginUser(data) {
         let response = await this.request(`/auth/login`, data, "post");
-        return response.token;
+        return response;
     };
 
     /** Register for Nightcapp */
