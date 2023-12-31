@@ -6,6 +6,8 @@ import { useRouter } from "next/router";
 import CurrentUserContext from "../CurrentUserContext";
 import UserDbApi from "../../../pages/api/users/UserDbApi";
 
+// FIXME DON'T LET USERS REGISTER WITH EMPTY FIELDS
+
 function RegistrationForm() {
     const router = useRouter();
     const { setToken } = useContext(CurrentUserContext);
