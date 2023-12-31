@@ -11,7 +11,7 @@ import UserDbApi from "../../../pages/api/users/UserDbApi";
 
 function LoginForm() {
     const router = useRouter();
-    const { setToken } = useContext(CurrentUserContext);
+    const { setToken, setCurrentUser } = useContext(CurrentUserContext);
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
     const [loginFormData, setLoginFormData] = useState({
         username: "",
@@ -20,8 +20,9 @@ function LoginForm() {
 
     async function loginRequest(loginFormData) {
         try {
-            let token = await UserDbApi.loginUser(loginFormData);
-            setToken(token);
+            let result = await UserDbApi.loginUser(loginFormData);
+            setCurrentUser(result.user.name);
+            setToken(result.token);
             return { success: true };
         } catch (errors) {
             console.log("Login failed", errors);
