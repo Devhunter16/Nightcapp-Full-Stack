@@ -12,7 +12,8 @@ class User {
     static async login(username, password) {
 
         const result = await db.query(
-            `SELECT username, 
+            `SELECT first_name as name,
+                username, 
                 password
                 FROM users
                 WHERE username = $1`,
