@@ -29,7 +29,6 @@ function useLocalStorage(key, firstvalue = null) {
             } else {
                 localStorage.setItem(key, item);
             };
-            console.log("item value inside userLocalStorage hook:", item);
         },
         [key, item]
     );
