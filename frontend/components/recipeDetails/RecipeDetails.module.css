@@ -95,11 +95,23 @@
     }
 }
 
+@media (max-width: 655px) {
+    .img {
+        margin-top: 40px;
+    }
+}
+
 @media (max-width: 600px) {
     .img {
-        height: 95vw;
+        height: 90vw;
         width: 95vw;
         margin-right: 0px;
+    }
+}
+
+@media (max-width: 495px) {
+    .img {
+        margin-top: 105px;
     }
 }
 
