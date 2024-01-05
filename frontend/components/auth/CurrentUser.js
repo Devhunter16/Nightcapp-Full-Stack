@@ -19,11 +19,22 @@ export default function CurrentUser({ children }) {
         setCurrentUser({ name: "John Doe" });
     }, []);
 
+    // Function to clear the token and log the user out
+    const logout = () => {
+        // Clear token from local storage
+        localStorage.removeItem(TOKEN_STORAGE_ID);
+        // Clear token state
+        setToken(null);
+        // Update currentUser state
+        setCurrentUser(null);
+    };
+
     const initialValue = {
         currentUser,
         setCurrentUser,
         token,
         setToken,
+        logout
     };
 
     return (
