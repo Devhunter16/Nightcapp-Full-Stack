@@ -8,7 +8,6 @@ export const TOKEN_STORAGE_ID = "nightcapp-token";
 export default function CurrentUser({ children }) {
     const [currentUser, setCurrentUser] = useState(null);
     const [token, setToken] = useLocalStorage(TOKEN_STORAGE_ID);
-    // const [token, setToken] = useState(null);
 
     useEffect(() => {
         const item = localStorage.getItem(TOKEN_STORAGE_ID);
