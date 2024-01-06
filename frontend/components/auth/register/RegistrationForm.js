@@ -34,7 +34,7 @@ function RegistrationForm() {
         e.preventDefault();
         const response = await registerRequest(registrationFormData);
         if (response.success) {
-            router.push("/");
+            router.push("/login");
         } else {
             console.log(response.errors);
         };
