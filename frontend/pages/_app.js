@@ -1,11 +1,14 @@
 import "@/styles/globals.css";
 
 import CurrentUserContext from "../components/auth/CurrentUser";
+import { ModalProvider } from "../components/modal/ModalContext";
 
 function MyApp({ Component, pageProps }) {
     return (
         <CurrentUserContext>
-            <Component {...pageProps} />
+            <ModalProvider>
+                <Component {...pageProps} />
+            </ModalProvider>
         </CurrentUserContext>
     );
 };
