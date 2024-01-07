@@ -3,9 +3,13 @@ import styles from "./Layout.module.css";
 import Head from "next/head";
 
 import Navigation from "../nav/Navbar";
+import AlertModal from "../modal/alertModal/AlertModal";
 import Footer from "../footer/Footer";
+import { useModal } from "../modal/ModalContext"
 
 function Layout(props) {
+    const { isModalOpen } = useModal()
+
     return (
         <>
             <Head>
@@ -21,6 +25,7 @@ function Layout(props) {
                 ></link>
             </Head>
             <div className={styles.container}>
+                {isModalOpen && <AlertModal />}
                 <Navigation />
                 <main className={styles.main}>
                     {props.children}
