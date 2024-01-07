@@ -15,23 +15,30 @@ export const ModalProvider = ({ children }) => {
             handleIsLoggedIn();
         } else if (userStatus === "loggedOut") {
             handleIsLoggedOut();
+        } else if (userStatus === "initiallyRegistered") {
+            handleInitialUserRegistration();
         };
-        console.log("Hello from Modal useEffect!")
     }, [userStatus]);
 
+    const handleInitialUserRegistration = () => {
+        setUserStatus("initiallyRegistered");
+        setIsModalOpen(true);
+        setPrimaryMessage("Welcome in!");
+        setSecondaryMessage("You've been successfully registered!");
+    };
 
     const handleIsLoggedIn = () => {
         setUserStatus("loggedIn");
         setIsModalOpen(true);
         setPrimaryMessage("Welcome back!");
-        setSecondaryMessage("You've been successfully logged in!")
+        setSecondaryMessage("You've been successfully logged in!");
     };
 
     const handleIsLoggedOut = () => {
         setUserStatus("loggedOut");
         setIsModalOpen(true);
         setPrimaryMessage("Goodbye!");
-        setSecondaryMessage("You've been successfully logged Out!")
+        setSecondaryMessage("You've been successfully logged Out!");
     };
 
     const openModal = () => {
