@@ -5,12 +5,14 @@ import { useState, useContext } from "react";
 import { useRouter } from "next/router";
 
 import CurrentUserContext from "../CurrentUserContext";
+import { useModal } from "../../modal/ModalContext"
 import UserDbApi from "../../../pages/api/users/UserDbApi";
 
 // FIXME DON'T LET USERS LOG IN WITH EMPTY FIELDS
 
 function LoginForm() {
     const router = useRouter();
+    const { setUserStatus } = useModal()
     const { setToken, setCurrentUser } = useContext(CurrentUserContext);
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
     const [loginFormData, setLoginFormData] = useState({
@@ -33,6 +35,7 @@ function LoginForm() {
     async function handleSubmit(e) {
         e.preventDefault();
         const response = await loginRequest(loginFormData);
+        setUserStatus("loggedIn");
         if (response.success) {
             router.push("/");
         } else {
