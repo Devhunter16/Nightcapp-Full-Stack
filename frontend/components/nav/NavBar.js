@@ -32,7 +32,6 @@ function Navigation() {
     // Handle logout action
     const handleLogout = () => {
         logout();
-        console.log("Hello from handleLogout function!");
         setUserStatus("loggedOut");
         setIsLoggedIn(false);
     };
