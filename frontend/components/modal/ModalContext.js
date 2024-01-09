@@ -15,16 +15,16 @@ export const ModalProvider = ({ children }) => {
             handleIsLoggedIn();
         } else if (userStatus === "loggedOut") {
             handleIsLoggedOut();
-        } else if (userStatus === "initiallyRegistered") {
+        } else if (userStatus === "registered") {
             handleInitialUserRegistration();
         };
     }, [userStatus]);
 
     const handleInitialUserRegistration = () => {
-        setUserStatus("initiallyRegistered");
+        setUserStatus("registered");
         setIsModalOpen(true);
-        setPrimaryMessage("Welcome in!");
-        setSecondaryMessage("You've been successfully registered!");
+        setPrimaryMessage("Welcome!");
+        setSecondaryMessage("You've been successfully registered. You may now log in.");
     };
 
     const handleIsLoggedIn = () => {
@@ -38,7 +38,7 @@ export const ModalProvider = ({ children }) => {
         setUserStatus("loggedOut");
         setIsModalOpen(true);
         setPrimaryMessage("Goodbye!");
-        setSecondaryMessage("You've been successfully logged Out!");
+        setSecondaryMessage("You've been successfully logged out!");
     };
 
     const openModal = () => {
@@ -69,6 +69,6 @@ export const useModal = () => {
     const context = useContext(ModalContext);
     if (!context) {
         throw new Error('useModal must be used within a ModalProvider');
-    }
+    };
     return context;
 };
