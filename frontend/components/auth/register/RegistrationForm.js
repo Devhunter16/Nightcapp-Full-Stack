@@ -1,16 +1,14 @@
 import styles from "./RegistrationForm.module.css";
 
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { useRouter } from "next/router";
 
-import CurrentUserContext from "../CurrentUserContext";
+import { useModal } from "../../modal/ModalContext"
 import UserDbApi from "../../../pages/api/users/UserDbApi";
-
-// FIXME DON'T LET USERS REGISTER WITH EMPTY FIELDS
 
 function RegistrationForm() {
     const router = useRouter();
-    const { setToken } = useContext(CurrentUserContext);
+    const { setUserStatus } = useModal()
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
     const [registrationFormData, setRegistrationFormData] = useState({
         username: "",
@@ -21,8 +19,7 @@ function RegistrationForm() {
 
     async function registerRequest(registrationFormData) {
         try {
-            let token = await UserDbApi.registerUser(registrationFormData);
-            setToken(token);
+            await UserDbApi.registerUser(registrationFormData);
             return { success: true };
         } catch (errors) {
             console.log("Registration failed.", errors);
@@ -34,8 +31,10 @@ function RegistrationForm() {
         e.preventDefault();
         const response = await registerRequest(registrationFormData);
         if (response.success) {
+            setUserStatus("registered");
             router.push("/login");
         } else {
+            setUserStatus("duplicateUsername");
             console.log(response.errors);
         };
     };
@@ -53,7 +52,7 @@ function RegistrationForm() {
         <>
             <h3 className={styles.registrationIntro}>Sign up with us today!</h3>
             <div className={styles.registrationForm}>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <div className={styles.formGroup}>
                         <label className={styles.label} htmlFor="firstName">
                             First Name:
@@ -119,7 +118,7 @@ function RegistrationForm() {
                         </div>
                     </div>
                     <div className={styles.formGroup}>
-                        <button className={styles.btn} type="submit" onClick={handleSubmit}>
+                        <button className={styles.btn} type="submit">
                             Sign Up
                         </button>
                     </div>
