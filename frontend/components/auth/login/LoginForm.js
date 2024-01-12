@@ -8,8 +8,6 @@ import CurrentUserContext from "../CurrentUserContext";
 import { useModal } from "../../modal/ModalContext"
 import UserDbApi from "../../../pages/api/users/UserDbApi";
 
-// FIXME DON'T LET USERS LOG IN WITH EMPTY FIELDS
-
 function LoginForm() {
     const router = useRouter();
     const { setUserStatus } = useModal()
@@ -35,10 +33,11 @@ function LoginForm() {
     async function handleSubmit(e) {
         e.preventDefault();
         const response = await loginRequest(loginFormData);
-        setUserStatus("loggedIn");
         if (response.success) {
+            setUserStatus("loggedIn");
             router.push("/");
         } else {
+            setUserStatus("invalidLogin");
             console.log(response.errors);
         };
     };
@@ -56,7 +55,7 @@ function LoginForm() {
         <>
             <h3 className={styles.loginIntro}>Welcome!</h3>
             <div className={styles.loginForm}>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <div className={styles.formGroup}>
                         <label htmlFor="username" className={styles.label}>
                             Username:
@@ -96,7 +95,7 @@ function LoginForm() {
                     </div>
 
                     <div className={styles.formGroup}>
-                        <button className={styles.btn} type="submit" onClick={handleSubmit}>
+                        <button className={styles.btn} type="submit">
                             Log In
                         </button>
                     </div>
