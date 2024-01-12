@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import UserContext from "../auth/CurrentUserContext";
 import LoggedInNav from "./LoggedInNav";
 import LoggedOutNav from "./LoggedOutNav";
+import SearchForm from "../searchForm/SearchForm";
 import { useModal } from "../modal/ModalContext"
 
 function Navigation() {
