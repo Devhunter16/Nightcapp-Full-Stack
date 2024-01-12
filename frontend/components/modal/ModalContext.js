@@ -17,25 +17,38 @@ export const ModalProvider = ({ children }) => {
             handleIsLoggedOut();
         } else if (userStatus === "registered") {
             handleInitialUserRegistration();
+        } else if (userStatus === "duplicateUsername") {
+            handleDuplicateUsername();
+        } else if (userStatus === "invalidLogin") {
+            handleInvalidLogin();
         };
     }, [userStatus]);
 
+    const handleDuplicateUsername = () => {
+        setIsModalOpen(true);
+        setPrimaryMessage("Whoops!");
+        setSecondaryMessage("That username is already taken. Please try again.");
+    };
+
     const handleInitialUserRegistration = () => {
-        setUserStatus("registered");
         setIsModalOpen(true);
         setPrimaryMessage("Welcome!");
         setSecondaryMessage("You've been successfully registered. You may now log in.");
     };
 
     const handleIsLoggedIn = () => {
-        setUserStatus("loggedIn");
         setIsModalOpen(true);
         setPrimaryMessage("Welcome back!");
         setSecondaryMessage("You've been successfully logged in!");
     };
 
+    const handleInvalidLogin = () => {
+        setIsModalOpen(true);
+        setPrimaryMessage("Whoops!");
+        setSecondaryMessage("Invalid username or password. Please try again.");
+    };
+
     const handleIsLoggedOut = () => {
-        setUserStatus("loggedOut");
         setIsModalOpen(true);
         setPrimaryMessage("Goodbye!");
         setSecondaryMessage("You've been successfully logged out!");
