@@ -21,7 +21,7 @@ function LoginForm() {
     async function loginRequest(loginFormData) {
         try {
             let result = await UserDbApi.loginUser(loginFormData);
-            setCurrentUser(result.user.username);
+            setCurrentUser(result.user.userid);
             setToken(result.token);
             return { success: true };
         } catch (errors) {
