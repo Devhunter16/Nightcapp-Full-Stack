@@ -12,7 +12,8 @@ class User {
     static async login(username, password) {
 
         const result = await db.query(
-            `SELECT first_name as name,
+            `SELECT id as userId,
+                first_name as name,
                 username, 
                 password
                 FROM users
@@ -65,6 +66,42 @@ class User {
         } catch (error) {
             // Handle registration errors
             throw new BadRequestError(`Registration failed: ${error.message}`);
+        };
+    };
+
+    // Add to a user's favorites
+    static async addFavorite() {
+        try {
+            // Check for duplicate username
+            const duplicateCheck = await db.query(
+                `SELECT username
+                FROM users
+                WHERE username = $1`,
+                [username]
+            );
+
+            if (duplicateCheck.rows[0]) {
+                throw new BadRequestError(`Duplicate username: ${username}`);
+            };
+
+            // Hash the password
+            const hashedPassword = await bcrypt.hash(password, 12);
+
+            // Insert user into the database
+            const result = await db.query(
+                `INSERT INTO users
+                (first_name, last_name, username, password)
+                VALUES ($1, $2, $3, $4)
+                RETURNING *`,
+                [firstName, lastName, username, hashedPassword]
+            );
+
+            const user = result.rows[0];
+
+            return user;
+        } catch (error) {
+            // Handle registration errors
+            throw new BadRequestError(`Failed to add favorite: ${error.message}`);
         };
     };
 };
