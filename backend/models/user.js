@@ -70,37 +70,33 @@ class User {
     };
 
     // Add to a user's favorites
-    static async addFavorite() {
+    static async addFavorite(userId, cocktailId) {
         try {
-            // Check for duplicate username
+            // Check for duplicate favorite
             const duplicateCheck = await db.query(
-                `SELECT username
-                FROM users
-                WHERE username = $1`,
-                [username]
+                `SELECT user_id
+                FROM user_favorites
+                WHERE cocktail_id = $1`,
+                [cocktailId]
             );
 
             if (duplicateCheck.rows[0]) {
-                throw new BadRequestError(`Duplicate username: ${username}`);
+                throw new BadRequestError("You've already added this cocktail to your favorites!");
             };
 
-            // Hash the password
-            const hashedPassword = await bcrypt.hash(password, 12);
-
-            // Insert user into the database
             const result = await db.query(
-                `INSERT INTO users
-                (first_name, last_name, username, password)
-                VALUES ($1, $2, $3, $4)
+                `INSERT INTO user_favorites
+                (user_id, cocktail_id)
+                VALUES ($1, $2)
                 RETURNING *`,
-                [firstName, lastName, username, hashedPassword]
+                [userId, cocktailId]
             );
 
-            const user = result.rows[0];
+            const userFavorite = result.rows[0];
 
-            return user;
+            return userFavorite;
         } catch (error) {
-            // Handle registration errors
+            // Handle errors
             throw new BadRequestError(`Failed to add favorite: ${error.message}`);
         };
     };
