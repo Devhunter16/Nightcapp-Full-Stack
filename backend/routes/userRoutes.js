@@ -28,4 +28,16 @@ router.post("/register", async function (req, res, next) {
     };
 });
 
+router.post("/addFavorite", async function (req, res, next) {
+    try {
+        const { currentUser, cocktail } = req.body;
+        const userId = currentUser;
+        const cocktailId = cocktail.idDrink;
+        const newFavorite = await User.addFavorite(userId, cocktailId);
+        return res.json({ newFavorite });
+    } catch (err) {
+        return next(err);
+    };
+});
+
 module.exports = router;
