@@ -21,6 +21,8 @@ export const ModalProvider = ({ children }) => {
             handleDuplicateUsername();
         } else if (userStatus === "invalidLogin") {
             handleInvalidLogin();
+        } else if (userStatus === "favoritedRecipe") {
+            handleAddNewFavorite();
         };
     }, [userStatus]);
 
@@ -53,6 +55,13 @@ export const ModalProvider = ({ children }) => {
         setPrimaryMessage("Goodbye!");
         setSecondaryMessage("You've been successfully logged out!");
     };
+
+    const handleAddNewFavorite = () => {
+        setIsModalOpen(true);
+        setPrimaryMessage("Success!");
+        setSecondaryMessage("This recipe has been added to your favorites!");
+    };
+
 
     const openModal = () => {
         setIsModalOpen(true);

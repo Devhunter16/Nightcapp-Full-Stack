@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 
 import Layout from "../../../components/layout/Layout";
 import DrinksList from "../../../components/drinksList/DrinksList";
@@ -18,11 +18,11 @@ export default function DrinksPage() {
             if (drinks) {
                 const parsedDrinks = JSON.parse(drinks);
                 setParsedCocktails(parsedDrinks);
-            }
+            };
         } catch (error) {
             console.error("Error parsing drinks data", error);
             // FIXME Handle the error, e.g., redirect to an error page or display an error message
-        }
+        };
     }, [drinks]);
 
     const handleShowDrinkRecipe = (result) => {
@@ -32,7 +32,7 @@ export default function DrinksPage() {
             query: {
                 drink: JSON.stringify(result)
             }
-        })
+        });
     };
 
     return (

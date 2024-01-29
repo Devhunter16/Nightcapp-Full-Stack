@@ -25,6 +25,14 @@ function LoggedInNav(props) {
                 <li className={`${styles.navItem} ${router.pathname === "/about" ? styles.active : ""}`}>
                     <Link href="/about">About Us</Link>
                 </li>
+                <li className={`${styles.navItem} ${router.pathname === `/favorites/${props.userId}` ? styles.active : ""}`}>
+                    <Link
+                        href={`/favorites/${props.userId}`}
+                        onClick={props.handleGetFavorites}
+                    >
+                        Favorites
+                    </Link>
+                </li>
                 <li className={`${styles.navItem}`} onClick={props.logout}>
                     Logout
                 </li>

@@ -1,14 +1,15 @@
 import { useState, useContext, useEffect } from "react";
 import { useRouter } from "next/router";
 
-import UserContext from "../auth/CurrentUserContext";
 import LoggedInNav from "./LoggedInNav";
 import LoggedOutNav from "./LoggedOutNav";
 import SearchForm from "../searchForm/SearchForm";
+import UserContext from "../auth/CurrentUserContext";
+import UserDbApi from "../../pages/api/users/UserDbApi";
 import { useModal } from "../modal/ModalContext"
 
 function Navigation() {
-    const { token, logout } = useContext(UserContext);
+    const { token, currentUser, logout } = useContext(UserContext);
     const { setUserStatus } = useModal();
     const router = useRouter();
 
@@ -24,6 +25,25 @@ function Navigation() {
         };
     }, [token]);
 
+
+    const handleGetFavorites = async () => {
+        try {
+            const favorites = await UserDbApi.getFavorites(currentUser);
+            console.log("Favorites:", favorites);
+
+            // Pushing variables through to page and setting the route
+            router.push({
+                pathname: `/favorites/${currentUser}`,
+                query: {
+                    favorites: JSON.stringify(favorites),
+                },
+            });
+
+        } catch (error) {
+            console.error("Error getting favorites:", error);
+        };
+    };
+
     // Conditionally render the SearchForm only on specific pages
     const renderSearchForm = () => {
         const pagesWithSearchForm = ["/drink/[drinkId]", "/drinks/[searchTerm]"];
@@ -33,6 +53,7 @@ function Navigation() {
     // Handle logout action
     const handleLogout = () => {
         logout();
+        router.push("/");
         setUserStatus("loggedOut");
         setIsLoggedIn(false);
     };
@@ -42,6 +63,8 @@ function Navigation() {
             {
                 isLoggedIn ? (
                     <LoggedInNav
+                        handleGetFavorites={handleGetFavorites}
+                        userId={currentUser}
                         logout={handleLogout}
                         renderSearchForm={renderSearchForm}
                     />

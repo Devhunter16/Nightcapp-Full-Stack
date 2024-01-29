@@ -154,3 +154,25 @@
 #drinkDescription {
     line-height: 23px;
 }
+
+#btn {
+    padding: 12px 24px;
+    margin: 20px 0px;
+    border-radius: .75rem;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: 1px solid #a29dec;
+    font-family: 'League Spartan', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    color: white;
+    text-align: center;
+    background-color: #d793bb;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+#btn:hover {
+    color: #8f88e6;
+    background-color: white;
+}
