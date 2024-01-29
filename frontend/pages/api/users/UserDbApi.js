@@ -1,5 +1,7 @@
 import axios from "axios";
 
+import matchIngredientsWithMeasurements from "../../../utils/utils";
+
 // Eventually make this pull a variable from your .env
 const BACKEND_API_URL = "http://localhost:3002";
 
@@ -45,7 +47,23 @@ class UserDbApi {
     /** Gets all of a user's favorites */
     static async getFavorites(userId) {
         const response = await this.request(`/auth/getFavorites?userId=${userId}`);
-        return response;
+        const cocktailNames = response.favorites;
+        const favorites = [];
+
+        for (let cocktail of cocktailNames) {
+            const cocktailDetails = await axios({
+                method: "get",
+                url: `${BACKEND_API_URL}/cocktaildb/search_by_name?name=${cocktail.cocktail_name}`,
+            });
+            cocktail = cocktailDetails.data.drinks[0];
+            const ingredientsList = matchIngredientsWithMeasurements(cocktailDetails.data.drinks[0]);
+            favorites.push({
+                ...cocktail,
+                ingredientsList
+            });
+        };
+
+        return favorites;
     };
 };
 
