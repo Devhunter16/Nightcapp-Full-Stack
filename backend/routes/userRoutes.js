@@ -32,9 +32,22 @@ router.post("/addFavorite", async function (req, res, next) {
     try {
         const { currentUser, cocktail } = req.body;
         const userId = currentUser;
-        const cocktailId = cocktail.idDrink;
-        const newFavorite = await User.addFavorite(userId, cocktailId);
+        const cocktailName = cocktail.strDrink;
+        const newFavorite = await User.addFavorite(userId, cocktailName);
         return res.json({ newFavorite });
+    } catch (err) {
+        return next(err);
+    };
+});
+
+router.get("/getFavorites", async function (req, res, next) {
+    try {
+        const { userId } = req.query;
+        if (!userId) {
+            throw new Error("userId is missing in the request query parameters");
+        };
+        const favorites = await User.getFavorites(userId);
+        return res.json({ favorites });
     } catch (err) {
         return next(err);
     };
