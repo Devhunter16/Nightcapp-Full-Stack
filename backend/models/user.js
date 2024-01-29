@@ -70,14 +70,14 @@ class User {
     };
 
     // Add to a user's favorites
-    static async addFavorite(userId, cocktailId) {
+    static async addFavorite(userId, cocktailName) {
         try {
             // Check for duplicate favorite
             const duplicateCheck = await db.query(
                 `SELECT user_id
                 FROM user_favorites
-                WHERE cocktail_id = $1`,
-                [cocktailId]
+                WHERE cocktail_name = $1`,
+                [cocktailName]
             );
 
             if (duplicateCheck.rows[0]) {
@@ -86,10 +86,10 @@ class User {
 
             const result = await db.query(
                 `INSERT INTO user_favorites
-                (user_id, cocktail_id)
+                (user_id, cocktail_name)
                 VALUES ($1, $2)
                 RETURNING *`,
-                [userId, cocktailId]
+                [userId, cocktailName]
             );
 
             const userFavorite = result.rows[0];
@@ -98,6 +98,23 @@ class User {
         } catch (error) {
             // Handle errors
             throw new BadRequestError(`Failed to add favorite: ${error.message}`);
+        };
+    };
+
+    // Get all of a user's saved favorites
+    static async getFavorites(userId) {
+        try {
+            const favorites = await db.query(
+                `SELECT cocktail_name 
+                    FROM user_favorites 
+                    WHERE user_id = $1`,
+                [userId]
+            );
+
+            return favorites.rows;
+        } catch (error) {
+            // Handle errors
+            throw new BadRequestError(`Failed to get favorites: ${error.message}`);
         };
     };
 };
