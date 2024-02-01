@@ -53,13 +53,17 @@ export default function Favorites() {
 
     return (
         <Layout>
-            {favorites && <FavoritesList
-                favorites={parsedFavorites}
-                handleShowFavorites={handleShowFavoriteRecipe}
-            />}
-            {showMessage && <h1 className={styles.noFavoritesMessage}>
+            {favorites &&
+                <div className={styles.favoritesContainer}>
+                    <h1 className={styles.myFavorites}>My Favorites</h1>
+                    <FavoritesList
+                        favorites={parsedFavorites}
+                        handleShowFavorites={handleShowFavoriteRecipe}
+                    />
+                </div>}
+            {showMessage && <h2 className={styles.noFavoritesMessage}>
                 Try searching a cocktail to add it as a favorite!
-            </h1>}
+            </h2>}
         </Layout>
     );
 };
