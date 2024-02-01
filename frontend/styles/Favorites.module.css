@@ -1,0 +1,25 @@
+.favoritesContainer {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 48px;
+}
+
+.myFavorites {
+    margin: 5% 12px 38px 12px;
+    text-align: center;
+    font-family: 'League Spartan', sans-serif;
+    font-weight: 400;
+    color: #fff;
+    text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #f09,
+        0 0 82px #f09, 0 0 92px #f09, 0 0 102px #f09, 0 0 151px #f09;
+    font-size: 3rem;
+}
+
+.noFavoritesMessage {
+    color: #fff;
+    font-family: "Vibur", sans-serif;
+    padding: 20px;
+    line-height: 55px;
+    text-align: center;
+    font-size: 3rem;
+}
