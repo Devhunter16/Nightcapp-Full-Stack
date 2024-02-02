@@ -23,6 +23,8 @@ export const ModalProvider = ({ children }) => {
             handleInvalidLogin();
         } else if (userStatus === "favoritedRecipe") {
             handleAddNewFavorite();
+        } else if (userStatus === "deletedRecipe") {
+            handleDeleteFavorite();
         };
     }, [userStatus]);
 
@@ -62,6 +64,11 @@ export const ModalProvider = ({ children }) => {
         setSecondaryMessage("This recipe has been added to your favorites!");
     };
 
+    const handleDeleteFavorite = () => {
+        setIsModalOpen(true);
+        setPrimaryMessage("Success!");
+        setSecondaryMessage("This recipe has been deleted from your favorites!");
+    };
 
     const openModal = () => {
         setIsModalOpen(true);
