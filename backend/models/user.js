@@ -101,19 +101,35 @@ class User {
         };
     };
 
+    // Delete a favorite cocktail recipe from db
+    static async deleteFavorite(userId, cocktailName) {
+        try {
+            const deletedFavorite = await db.query(
+                `DELETE FROM user_favorites 
+                WHERE user_id = $1
+                AND cocktail_Name = $2
+                RETURNING *`,
+                [userId, cocktailName]
+            );
+
+            return deletedFavorite.rows[0];
+        } catch (error) {
+            throw new BadRequestError(`Failed to delete favorite: ${error.message}`);
+        };
+    };
+
     // Get all of a user's saved favorites
     static async getFavorites(userId) {
         try {
             const favorites = await db.query(
                 `SELECT cocktail_name 
-                    FROM user_favorites 
-                    WHERE user_id = $1`,
+                FROM user_favorites 
+                WHERE user_id = $1`,
                 [userId]
             );
 
             return favorites.rows;
         } catch (error) {
-            // Handle errors
             throw new BadRequestError(`Failed to get favorites: ${error.message}`);
         };
     };

@@ -40,6 +40,22 @@ router.post("/addFavorite", async function (req, res, next) {
     };
 });
 
+router.delete("/deleteFavorite", async function (req, res, next) {
+    try {
+        const { userId, cocktailName } = req.query;
+        if (!userId) {
+            throw new Error("userId is missing in the request query parameters");
+        };
+        if (!cocktailName) {
+            throw new Error("cocktailName is missing in the request query parameters");
+        };
+        const deletedFavorite = await User.deleteFavorite(userId, cocktailName);
+        return res.json({ deletedFavorite });
+    } catch (err) {
+        return next(err);
+    };
+});
+
 router.get("/getFavorites", async function (req, res, next) {
     try {
         const { userId } = req.query;
