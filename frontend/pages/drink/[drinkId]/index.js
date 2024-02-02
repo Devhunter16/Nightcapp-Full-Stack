@@ -57,6 +57,17 @@ export default function DrinkPage() {
         };
     };
 
+    const handleRemoveFavorite = async () => {
+        if (token) {
+            const cocktail = JSON.parse(drink);
+            setUserStatus("deletedRecipe");
+            await UserDbApi.deleteFavorite(
+                currentUser,
+                cocktail
+            );
+            router.push("/");
+        };
+    };
 
     return (
         <Layout>
@@ -69,6 +80,7 @@ export default function DrinkPage() {
                     instructions={parsedCocktail.instructions}
                     ingredientsList={parsedCocktail.ingredientsList}
                     addFavorite={handleAddFavorite}
+                    removeFavorite={handleRemoveFavorite}
                 />
             )}
         </Layout>
