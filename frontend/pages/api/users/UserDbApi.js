@@ -11,8 +11,8 @@ class UserDbApi {
     static token;
 
     // Generic method for making backend api requests
-    static async request(endpoint, data = {}, method = "get") {
-        console.debug("User API Call: ", endpoint, data, method);
+    static async request(endpoint, method = "get", data = {},) {
+        console.debug("User API Call: ", endpoint, method, data);
         const url = `${BACKEND_API_URL}${endpoint}`;
         const headers = {};
         const params = method === "get" ? data : {};
@@ -28,19 +28,25 @@ class UserDbApi {
 
     /** Login to Nightcapp */
     static async loginUser(data) {
-        const response = await this.request(`/auth/login`, data, "post");
+        const response = await this.request(`/auth/login`, "post", data,);
         return response;
     };
 
     /** Register for Nightcapp */
     static async registerUser(data) {
-        const response = await this.request(`/auth/register`, data, "post");
+        const response = await this.request(`/auth/register`, "post", data);
         return response.token;
     };
 
     /** Add cocktail to user's favorites */
     static async addFavorite(data) {
-        const response = await this.request(`/auth/addFavorite`, data, "post");
+        const response = await this.request(`/auth/addFavorite`, "post", data);
+        return response;
+    };
+
+    /** Remove cocktail from user's favorites */
+    static async deleteFavorite(userId, cocktail) {
+        const response = await this.request(`/auth/deleteFavorite?userId=${userId}&cocktailName=${cocktail.strDrink}`, "delete");
         return response;
     };
 
