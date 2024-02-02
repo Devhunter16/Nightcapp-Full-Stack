@@ -155,7 +155,7 @@
     line-height: 23px;
 }
 
-#btn {
+.btn {
     padding: 12px 24px;
     margin: 20px 0px;
     border-radius: .75rem;
@@ -172,7 +172,7 @@
     transition: all 0.2s;
 }
 
-#btn:hover {
+.btn:hover {
     color: #8f88e6;
     background-color: white;
 }
