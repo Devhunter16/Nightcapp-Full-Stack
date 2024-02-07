@@ -3,26 +3,47 @@ import styles from "./RecipeDetails.module.css";
 import { useState, useEffect, useContext } from "react";
 
 import UserContext from "../auth/CurrentUserContext";
+import UserDbApi from "../../pages/api/users/UserDbApi";
 
 function RecipeDetails(props) {
-    const { token } = useContext(UserContext);
-
-    // State to manage the logged-in status
+    const { token, currentUser } = useContext(UserContext);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [isFavorite, setIsFavorite] = useState(false);
 
-    // Check if token exists on mount and update isLoggedIn accordingly
+    // Used props.name as a dependency because it changes every time the component
+    // mounts and leaving a blank array in order to do the same was causing bugs
     useEffect(() => {
+        handleCheckIfDrinkIsFavorite();
+    }, [props.name, props.addFavorite]);
+
+    const handleCheckIfDrinkIsFavorite = async () => {
+        const favorites = await UserDbApi.getFavorites(currentUser);
+        handleCheckIfUserIsLoggedIn();
+        for (const favorite of favorites) {
+            if (props.name === favorite.strDrink) {
+                console.log("We have name equivalency");
+                setIsFavorite(true);
+                return;
+            } else {
+                console.log("We do not have name equivalency");
+                setIsFavorite(false);
+            };
+        };
+        return;
+    };
+
+    const handleCheckIfUserIsLoggedIn = () => {
         if (token) {
             setIsLoggedIn(true);
         } else {
             setIsLoggedIn(false);
         };
-    }, [token]);
+    };
 
     return (
         <>
             <div id={styles.body}>
-                <img className={styles.img} src={props.image}></img>
+                <img className={styles.img} src={props.image} alt={`${props.name} drink`}></img>
                 <div id={styles.description}>
                     <h1 id={styles.drinkTitle}>{props.name}</h1>
                     <h3 id={styles.ingredientsTitle}>Ingredients</h3>
@@ -41,7 +62,19 @@ function RecipeDetails(props) {
                     </ul>
                     <h3 id={styles.directionsTitle}>Directions</h3>
                     <p id={styles.drinkDescription}>{props.instructions}</p>
-                    {isLoggedIn && <button id={styles.btn} onClick={props.addFavorite}>Add to my favorites</button>}
+                    {isLoggedIn && (
+                        <>
+                            {isFavorite ? (
+                                <button className={styles.btn} onClick={props.removeFavorite}>
+                                    Remove from my favorites
+                                </button>
+                            ) : (
+                                <button className={styles.btn} onClick={props.addFavorite}>
+                                    Add to my favorites
+                                </button>
+                            )}
+                        </>
+                    )}
                 </div>
             </div>
         </>
