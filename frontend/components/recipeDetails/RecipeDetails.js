@@ -22,12 +22,10 @@ function RecipeDetails(props) {
         handleCheckIfUserIsLoggedIn();
         for (const favorite of favorites) {
             if (props.name === favorite.strDrink) {
-                console.log("We have name equivalency");
                 setIsFavorite(true);
                 setIsLoading(false);
                 return;
             } else {
-                console.log("We do not have name equivalency");
                 setIsFavorite(false);
                 setIsLoading(false);
             };
