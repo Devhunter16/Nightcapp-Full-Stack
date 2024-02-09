@@ -1,11 +1,9 @@
 import styles from "./HomePageIntro.module.css";
 
-import { useContext } from "react";
-
 import SearchForm from "../searchForm/SearchForm";
-import CurrentUserContext from "../auth/CurrentUserContext";
 
 function HomepageIntro() {
+
     return (
         <div id={styles.container}>
             <h1 id={styles.h1}>Nightcapp</h1>
