@@ -29,8 +29,6 @@ function Navigation() {
     const handleGetFavorites = async () => {
         try {
             const favorites = await UserDbApi.getFavorites(currentUser);
-            console.log("Favorites:", favorites);
-
             // Pushing variables through to page and setting the route
             router.push({
                 pathname: `/favorites/${currentUser}`,
@@ -38,7 +36,6 @@ function Navigation() {
                     favorites: JSON.stringify(favorites),
                 },
             });
-
         } catch (error) {
             console.error("Error getting favorites:", error);
         };
@@ -46,7 +43,11 @@ function Navigation() {
 
     // Conditionally render the SearchForm only on specific pages
     const renderSearchForm = () => {
-        const pagesWithSearchForm = ["/drink/[drinkId]", "/drinks/[searchTerm]"];
+        const pagesWithSearchForm = [
+            "/drink/[drinkId]",
+            "/drinks/[searchTerm]",
+            "/favorites/[userId]"
+        ];
         return pagesWithSearchForm.includes(router.pathname) ? <SearchForm /> : null;
     };
 
