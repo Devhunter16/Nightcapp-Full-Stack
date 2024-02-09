@@ -8,6 +8,8 @@ function LoggedInNav(props) {
     // in the Navbar is highlighted, and the same happens on the "About us" page
     const router = useRouter();
 
+    console.log(`/favorites/[${props.userId}]`);
+
     return (
         <div className={styles.nav}>
             <ul className={styles.navList}>
@@ -25,7 +27,7 @@ function LoggedInNav(props) {
                 <li className={`${styles.navItem} ${router.pathname === "/about" ? styles.active : ""}`}>
                     <Link href="/about">About Us</Link>
                 </li>
-                <li className={`${styles.navItem} ${router.pathname === `/favorites/${props.userId}` ? styles.active : ""}`}>
+                <li className={`${styles.navItem} ${router.pathname.startsWith("/favorites") ? styles.active : ""}`}>
                     <Link
                         href={`/favorites/${props.userId}`}
                         onClick={props.handleGetFavorites}
