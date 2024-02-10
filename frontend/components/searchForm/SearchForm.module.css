@@ -14,7 +14,7 @@
 .option {
     color: #d793bb;
     font-size: 1.5rem;
-    padding: 0 10px 15px 0;
+    padding: 0 0px 15px 0;
     font-family: 'League Spartan', sans-serif;
 }
 
@@ -22,6 +22,10 @@
     margin-left: 6px;
     font-weight: 700;
     color: #b7b3f5;
+    border: 2px solid #d793bb;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    padding: 5px 2px 5px 6px;
 }
 
 .option span:hover {
