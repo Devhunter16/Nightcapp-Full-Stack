@@ -29,7 +29,7 @@ function LoggedInNav(props) {
                 </li>
                 <li className={`${styles.navItem} ${router.pathname.startsWith("/favorites") ? styles.active : ""}`}>
                     <Link
-                        href={`/favorites/${props.userId}`}
+                        href={`/favorites/[${props.userId}]`}
                         onClick={props.handleGetFavorites}
                     >
                         Favorites
