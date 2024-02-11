@@ -2,10 +2,11 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 48px;
+    z-index: 1;
 }
 
 .myFavorites {
-    margin: 5% 12px 38px 12px;
+    margin: 7% 12px 38px 12px;
     text-align: center;
     font-family: 'League Spartan', sans-serif;
     font-weight: 400;
@@ -22,4 +23,49 @@
     line-height: 55px;
     text-align: center;
     font-size: 3rem;
+}
+
+@media (max-width: 1125px) {
+    .favoritesContainer {
+        margin-top: 15%;
+        margin-bottom: 23px;
+    }
+
+    .myFavorites {
+        margin: 45px 12px 18px 12px;
+    }
+}
+
+@media (max-width: 850px) {
+    .favoritesContainer {
+        margin-top: 15%;
+    }
+}
+
+@media (max-width: 725px) {
+    .favoritesContainer {
+        margin-bottom: 18px;
+    }
+
+    .myFavorites {
+        margin: 65px 12px -15px 12px;
+    }
+}
+
+@media (max-width: 695px) {
+    .myFavorites {
+        margin: 115px 12px -45px 12px;
+    }
+}
+
+@media (max-width: 495px) {
+    .myFavorites {
+        margin: 165px 12px -95px 12px;
+    }
+}
+
+@media (max-width: 455px) {
+    .myFavorites {
+        margin: 55% 12px -95px 12px;
+    }
 }
