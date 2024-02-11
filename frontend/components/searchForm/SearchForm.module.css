@@ -111,6 +111,11 @@
     .option {
         margin-top: 20px;
     }
+
+    .option span {
+        border-radius: 10px;
+        padding: 5px 6px 5px 6px;
+    }
 }
 
 @media (max-width: 495px) {
