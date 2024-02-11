@@ -1,3 +1,5 @@
+import styles from "../../../styles/DrinksList.module.css";
+
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
@@ -9,7 +11,7 @@ export default function DrinksPage() {
     const router = useRouter();
 
     const {
-        query: { drinks }
+        query: { drinks, searchType, searchTerm }
     } = router;
 
     // Set the parsedCocktail state when the component mounts
@@ -37,6 +39,8 @@ export default function DrinksPage() {
 
     return (
         <Layout>
+            <h1 className={styles.searchType}>Search results for cocktail {searchType}: "{searchTerm}"</h1>
+            <hr className={styles.divider}></hr>
             <DrinksList
                 results={parsedCocktails}
                 handleShowDrinkRecipe={handleShowDrinkRecipe}
