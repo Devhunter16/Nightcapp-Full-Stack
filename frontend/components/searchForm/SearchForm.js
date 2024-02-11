@@ -42,13 +42,28 @@ function SearchForm() {
             setAlert(true);
             console.log("No data");
         } else {
-            // Pushing variables through to page and setting the route
-            router.push({
-                pathname: `/drinks/${searchTerm}`,
-                query: {
-                    drinks: JSON.stringify(results),
-                },
-            });
+            if (searchByName) {
+                results = await searchCocktailByName(searchTerm);
+                // Pushing the search type through to the page and setting the route
+                router.push({
+                    pathname: `/drinks/${searchTerm}`,
+                    query: {
+                        drinks: JSON.stringify(results),
+                        searchType: "name", // Indicator for search by name
+                        searchTerm: searchTerm
+                    },
+                });
+            } else {
+                results = await searchCocktailByIngredient(searchTerm);
+                // Pushing the search type through to the page and setting the route
+                router.push({
+                    pathname: `/drinks/${searchTerm}`,
+                    query: {
+                        drinks: JSON.stringify(results),
+                        searchType: "ingredient" // Indicator for search by ingredient
+                    },
+                });
+            };
         };
     };
 
