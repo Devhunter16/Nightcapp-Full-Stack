@@ -1,0 +1,17 @@
+.searchType {
+    margin: 5% 12px 38px 12px;
+    text-align: center;
+    font-family: 'League Spartan', sans-serif;
+    font-weight: 400;
+    color: #fff;
+    text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #f09,
+        0 0 82px #f09, 0 0 92px #f09, 0 0 102px #f09, 0 0 151px #f09;
+    font-size: 3rem;
+}
+
+.divider {
+    border-color: #D793BB;
+    width: 40vw;
+    margin: 0px 0px 20px 0px;
+    /* Adjusts margin as needed */
+}
