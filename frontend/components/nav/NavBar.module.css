@@ -4,6 +4,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 0 20px;
+    z-index: 2;
 }
 
 .navList {
@@ -95,10 +96,14 @@
     .navItem {
         margin: -5px 10px 0 10px;
     }
-}
 
-@media (max-width: 385px) {
     .nav {
         padding: 0;
+    }
+}
+
+@media (max-width: 375px) {
+    .navItem {
+        font-size: 16px;
     }
 }
