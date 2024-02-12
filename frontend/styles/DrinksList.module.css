@@ -9,9 +9,74 @@
     font-size: 3rem;
 }
 
+@media (max-width: 1125px) {
+    .searchType {
+        margin: 15% 12px 38px 12px;
+    }
+}
+
+@media (max-width: 1125px) {
+    .searchType {
+        margin: 20% 12px 38px 12px;
+    }
+}
+
+@media (max-width: 725px) {
+    .searchType {
+        margin: 25% 12px 0px 12px;
+    }
+}
+
+@media (max-width: 695px) {
+    .searchType {
+        margin: 30% 12px -38px 12px;
+    }
+}
+
+@media (max-width: 630px) {
+    .searchType {
+        margin: 35% 12px -38px 12px;
+    }
+}
+
+@media (max-width: 565px) {
+    .searchType {
+        margin: 40% 12px -38px 12px;
+    }
+}
+
+@media (max-width: 495px) {
+    .searchType {
+        margin: 45% 12px -78px 12px;
+    }
+}
+
+@media (max-width: 455px) {
+    .searchType {
+        margin: 60% 12px -88px 12px;
+    }
+}
+
+@media (max-width: 390px) {
+    .searchType {
+        margin: 65% 12px -108px 12px;
+    }
+}
+
+@media (max-width: 345px) {
+    .searchType {
+        margin: 70% 12px -108px 12px;
+    }
+}
+
 .divider {
     border-color: #D793BB;
     width: 40vw;
     margin: 0px 0px 20px 0px;
-    /* Adjusts margin as needed */
+}
+
+@media (max-width: 725px) {
+    .divider {
+        display: none;
+    }
 }
