@@ -13,7 +13,7 @@
     #body {
         width: 45vw;
         margin-top: 2.5rem;
-        margin-bottom: 4rem;
+        margin-bottom: 2rem;
     }
 }
 
@@ -23,15 +23,33 @@
     }
 }
 
+@media (max-width: 1125px) {
+    #body {
+        margin-top: 8rem;
+    }
+}
+
 @media (max-width: 1000px) {
     #body {
         flex-direction: column;
     }
 }
 
+@media (max-width: 695px) {
+    #body {
+        margin-top: 9.5rem;
+    }
+}
+
 @media (max-width: 600px) {
     #body {
         width: 90vw;
+    }
+}
+
+@media (max-width: 340px) {
+    #body {
+        margin-top: 9rem;
     }
 }
 
