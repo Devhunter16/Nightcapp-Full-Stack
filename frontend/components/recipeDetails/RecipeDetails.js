@@ -14,7 +14,11 @@ function RecipeDetails(props) {
     // Used props.name as a dependency because it changes every time the component
     // mounts and leaving a blank array in order to do the same was causing bugs
     useEffect(() => {
-        handleCheckIfDrinkIsFavorite();
+        if (token && currentUser) {
+            handleCheckIfDrinkIsFavorite();
+        } else {
+            setIsLoading(false);
+        };
     }, [props.name, props.addFavorite]);
 
     const handleCheckIfDrinkIsFavorite = async () => {
