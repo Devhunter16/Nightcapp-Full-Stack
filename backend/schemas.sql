@@ -8,8 +8,8 @@ CREATE TABLE users (
 );
 
 /* Schema for the table that stores a user's saved favorites */
-CREATE TABLE user_favorite_recipes (
+CREATE TABLE user_favorites (
     id SERIAL PRIMARY KEY,
-    user_id INT REFERENCES users(id) ON DELETE CASCADE,
-    cocktail_id INT
+    user_id INT REFERENCES users(id),
+    cocktail_name TEXT NOT NULL
 );
