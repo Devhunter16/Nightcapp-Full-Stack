@@ -53,7 +53,7 @@ export default function Favorites() {
 
     return (
         <Layout>
-            {favorites &&
+            {(favorites && !showMessage) &&
                 <div className={styles.favoritesContainer}>
                     <h1 className={styles.myFavorites}>My Favorites</h1>
                     <FavoritesList
@@ -62,7 +62,7 @@ export default function Favorites() {
                     />
                 </div>}
             {showMessage && <h2 className={styles.noFavoritesMessage}>
-                Try searching a cocktail to add it as a favorite!
+                No Favorites!
             </h2>}
         </Layout>
     );
