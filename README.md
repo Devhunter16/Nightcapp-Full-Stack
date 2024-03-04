@@ -4,6 +4,8 @@ Created by Devin Hunter and Mason Sams
 
 ## Features
 - Cocktail Search: Search cocktail recipes by name or ingredient.
+- User Favorites: Save your favorite cocktail recipes and come back to them later.
+- Registration and login: Register and log in to start your cocktail collection.
 - Detailed Recipes: Click on a cocktail card to get a detailed view, including ingredients and instructions on creating your new favorite drink.
 - Responsive Design: Enjoy a seamless experience on both desktop and mobile devices.
 
@@ -14,9 +16,12 @@ Created by Devin Hunter and Mason Sams
 - Backend: Node.js, Express.js, PostgreSQL
 
 ## Main Components
+- SearchBar: Allows a user to search for cocktail recipes by name or ingredient.
 - DrinksList: Displays search results in stylish recipe cards.
 - RecipeCard: A card component that displays the cocktail image, title, and ingredints. Clicking on it takes users to the detailed recipe.
 - RecipeDetails: A detailed view of a selected cocktail, showing ingredients and preparation instructions.
+- NavBar: Allows a user to easily navigate between the app's web pages.
+- FavoritesList: Displays all of a user's saved favorites.
 
 - ## Styling
 Nightcapp uses modular CSS for styling individual components. For a consistent and beautiful design, gradients, hover effects, and media queries have been used extensively.
