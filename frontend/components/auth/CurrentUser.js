@@ -15,7 +15,7 @@ export default function CurrentUser({ children }) {
     }, [setToken]);
 
     useEffect(() => {
-        setCurrentUser({ name: "John Doe" });
+        setCurrentUser("John Doe");
     }, []);
 
     // Function to clear the token and log the user out
