@@ -8,9 +8,9 @@ const db = new Client({
     password: process.env.DB_PASSWORD,
     port: process.env.DB_PORT,
     ssl: {
-        rejectUnauthorized: false // For testing purposes, you can set this to false
+        rejectUnauthorized: false // For testing purposes I set this to false
     },
-    connectionTimeoutMillis: 5000 // Optional: Set connection timeout
+    connectionTimeoutMillis: 5000 // Set connection timeout
 });
 
 db.connect()
