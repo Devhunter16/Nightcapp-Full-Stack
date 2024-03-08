@@ -1,4 +1,4 @@
-import styles from "./Navbar.module.css";
+import styles from "./NavBar.module.css";
 
 import Link from "next/link";
 import { useRouter } from "next/router";
