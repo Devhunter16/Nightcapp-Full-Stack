@@ -71,3 +71,9 @@
         margin: 55% 12px -95px 12px;
     }
 }
+
+@media (max-height: 400px) {
+    .noFavoritesMessage {
+        margin-top: 50%;
+    }
+}
