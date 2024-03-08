@@ -2,7 +2,7 @@ import styles from "./Layout.module.css";
 
 import Head from "next/head";
 
-import Navigation from "../nav/Navbar";
+import Navigation from "../nav/NavBar";
 import AlertModal from "../modal/alertModal/AlertModal";
 import Footer from "../footer/Footer";
 import { useModal } from "../modal/ModalContext"
