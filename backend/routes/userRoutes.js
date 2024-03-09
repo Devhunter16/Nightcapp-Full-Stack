@@ -1,4 +1,3 @@
-// Need to look at this and configure it, may need to name the file "auth"
 const express = require("express");
 const router = express.Router();
 
