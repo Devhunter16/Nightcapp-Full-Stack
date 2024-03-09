@@ -1,4 +1,4 @@
-const app = require("./api");
+const app = require("./app.js");
 
 const PORT = process.env.PORT || 3002; // Use the provided port by Vercel or default to 3002
 
