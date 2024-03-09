@@ -2,7 +2,7 @@ import axios from "axios";
 
 import matchIngredientsWithMeasurements from "../../utils/utils";
 
-const BACKEND_API_URL = "https://nightcapp-backend-1alguzldv-devhunter16s-projects.vercel.app/";
+const BACKEND_API_URL = "https://nightcapp.vercel.app";
 
 // Function that makes a get request to the backend API to search cocktails by name
 export async function searchCocktailByName(searchTerm) {
