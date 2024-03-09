@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BACKEND_API_URL = "https://nightcapp.vercel.app/";
+const BACKEND_API_URL = "https://nightcapp.vercel.app";
 
 async function randomCocktail() {
   try {

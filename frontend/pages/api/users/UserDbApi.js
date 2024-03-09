@@ -3,7 +3,7 @@ import axios from "axios";
 import matchIngredientsWithMeasurements from "../../../utils/utils";
 
 // Eventually make this pull a variable from your .env
-const BACKEND_API_URL = "https://nightcapp.vercel.app/";
+const BACKEND_API_URL = "https://nightcapp.vercel.app";
 
 class UserDbApi {
 
@@ -20,7 +20,6 @@ class UserDbApi {
         try {
             return (await axios({ url, method, data, params, headers })).data;
         } catch (err) {
-            //let message = err.response.data.error.message;
             let message = err.response;
             throw Array.isArray(message) ? message : [message];
         };
