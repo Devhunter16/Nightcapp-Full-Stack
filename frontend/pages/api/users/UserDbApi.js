@@ -3,7 +3,7 @@ import axios from "axios";
 import matchIngredientsWithMeasurements from "../../../utils/utils";
 
 // Eventually make this pull a variable from your .env
-const BACKEND_API_URL = "http://localhost:3002";
+const BACKEND_API_URL = "https://nightcapp.vercel.app/";
 
 class UserDbApi {
 
