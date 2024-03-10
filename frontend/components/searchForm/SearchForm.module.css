@@ -25,7 +25,7 @@
     border: 2px solid #d793bb;
     border-bottom-left-radius: 10px;
     border-top-left-radius: 10px;
-    padding: 7px 2px 3px 6px;
+    padding: 6px 2px 4px 6px;
 }
 
 .option span:hover {
@@ -138,7 +138,7 @@
 
     .option span {
         border-radius: 10px;
-        padding: 5px 6px 5px 6px;
+        padding: 6px 6px 4px 6px;
     }
 }
 
