@@ -129,7 +129,7 @@ function SearchForm() {
                         {loading ? "Searching..." : "Search"}
                     </button>
                     <button
-                        className={styles.btn}
+                        className={styles.randomBtn}
                         onClick={
                             handleShowRandomCocktailRecipe
                         }

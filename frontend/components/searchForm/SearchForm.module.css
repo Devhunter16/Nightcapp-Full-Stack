@@ -49,6 +49,23 @@
     transition: all 0.2s;
 }
 
+.randomBtn {
+    padding: 10px 22px;
+    margin: 0 2px;
+    border-radius: .75rem;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: 1px solid #a29dec;
+    font-family: 'League Spartan', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    color: white;
+    text-align: center;
+    background-color: #d793bb;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
 @keyframes colorChange {
     0% {
         color: white;
@@ -75,7 +92,7 @@
 }
 
 #dice {
-    width: 12px;
+    width: 14px;
     margin-right: 5px;
     margin-left: -4px;
 }
