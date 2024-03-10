@@ -25,6 +25,10 @@ app.use(function (err, req, res, next) {
     const status = err.status || 500;
     const message = err.message;
 
+    // Set CORS headers
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+
     return res.status(status).json({
         error: { message, status },
     });
