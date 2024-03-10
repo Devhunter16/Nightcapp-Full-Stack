@@ -8,7 +8,15 @@ const userRoutes = require("../routes/userRoutes");
 
 const app = express();
 
-app.use(cors());
+// Configure CORS options
+const corsOptions = {
+    origin: "*", // Allow requests from any origin
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE", // Allow specified methods
+    preflightContinue: false,
+    optionsSuccessStatus: 204,
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 app.use("/cocktaildb", cocktailDbRoutes);
@@ -24,10 +32,6 @@ app.use(function (err, req, res, next) {
     if (process.env.NODE_ENV !== "test") console.error(err.stack);
     const status = err.status || 500;
     const message = err.message;
-
-    // Set CORS headers
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 
     return res.status(status).json({
         error: { message, status },
