@@ -8,15 +8,7 @@ const userRoutes = require("../routes/userRoutes");
 
 const app = express();
 
-// Configure CORS options
-const corsOptions = {
-    origin: "*", // Allow requests from any origin
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE", // Allow specified methods
-    preflightContinue: false,
-    optionsSuccessStatus: 204,
-};
-
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 
 app.use("/cocktaildb", cocktailDbRoutes);
