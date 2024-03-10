@@ -3,8 +3,8 @@ const express = require("express");
 // CORS is important because our backend and frontend are running on different ports
 const cors = require("cors");
 
-const cocktailDbRoutes = require("../routes/cocktailDbRoutes");
-const userRoutes = require("../routes/userRoutes");
+const cocktailDbRoutes = require("./routes/cocktailDbRoutes");
+const userRoutes = require("./routes/userRoutes");
 
 const app = express();
 
