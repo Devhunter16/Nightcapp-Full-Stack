@@ -4,7 +4,7 @@ Created by Devin Hunter and Mason Sams
 
 Experience Nightcapp at this web address: nightcapp-mixology.vercel.app
 
-This app is made possible by Vercel and Neon 
+This app is made possible by the services Vercel and Neon 
 
 ## Features
 - Cocktail Search: Search cocktail recipes by name or ingredient.
