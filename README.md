@@ -2,8 +2,6 @@
 
 Created by Devin Hunter and Mason Sams
 
-Experience Nightcapp at this web address: nightcapp-mixology.vercel.app
-
 This app is made possible by the services Vercel and Neon 
 
 ## Features
