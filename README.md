@@ -10,6 +10,7 @@ Created by Devin Hunter and Mason Sams
 - Responsive Design: Enjoy a seamless experience on both desktop and mobile devices.
 
 ## Screenshots
+![nightcapp_home](https://github.com/Devhunter16/Nightcapp-Full-Stack/assets/78935602/4cbeb715-b4d2-46bf-8a14-d8f3b0d1380b)
 
 ## Techstacks
 - Frontend: Next.js, CSS
